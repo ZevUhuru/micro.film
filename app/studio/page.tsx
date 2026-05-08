@@ -4,9 +4,9 @@ import { FilmStrip, FilmStripBadge } from "@/components/FilmStrip";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import {
   ASPECT_RATIO,
+  CONTACT_HREF,
   FILM_TOTAL_DURATION,
   IMAGE_MODEL_ID,
-  PASS_PRICE,
   platforms,
   SCENE_DURATION_RANGE,
   studioDefaults,
@@ -17,7 +17,7 @@ import {
 export const metadata: Metadata = {
   title: "Studio",
   description:
-    "Cast a character, write 45–90 second micro scenes, and cut a fifteen-minute vertical micro film. First three micro scenes free, rest unlocked with a Pass.",
+    "Research, develop, generate, and stitch a fifteen-minute vertical micro film end to end. The production studio for brands, agencies, publishers, and independent filmmakers.",
   alternates: { canonical: "/studio" },
   openGraph: {
     title: "micro.film Studio",
@@ -118,8 +118,7 @@ export default function StudioPage() {
             <p className="mt-5 max-w-xl text-base leading-7 text-[var(--foreground)]/65">
               Fill the slate, lock the character, queue the render. Cut a
               dozen 45–90 second micro scenes into a fifteen-minute vertical
-              film. The first three micro scenes go free; the rest unlocks
-              with a {PASS_PRICE} Pass.
+              film — for a campaign, a publisher channel, or your own reel.
             </p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-sm">
@@ -263,7 +262,7 @@ export default function StudioPage() {
 
         <FilmStripBand />
 
-        <section className="grid gap-4 py-12 md:grid-cols-3">
+        <section className="grid gap-4 py-12 md:grid-cols-2 lg:grid-cols-4">
           {workflowSteps.map((step) => (
             <article
               key={step.title}
@@ -290,15 +289,23 @@ export default function StudioPage() {
                   Help
                 </p>
                 <h2 className="serif mt-3 text-2xl leading-tight">
-                  Read the notes before you write the next micro scene.
+                  Read the notes — or hand us the brief and we&rsquo;ll build it with you.
                 </h2>
               </div>
-              <Link
-                href="/blog"
-                className="rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-[var(--foreground)] transition hover:bg-white/5"
-              >
-                Open notes
-              </Link>
+              <div className="flex flex-wrap items-center gap-3">
+                <Link
+                  href={CONTACT_HREF}
+                  className="rounded-full bg-[var(--paper)] px-5 py-3 text-sm font-medium text-[var(--ink)] transition hover:bg-[var(--amber-soft)]"
+                >
+                  Talk to us
+                </Link>
+                <Link
+                  href="/blog"
+                  className="rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-[var(--foreground)] transition hover:bg-white/5"
+                >
+                  Open notes
+                </Link>
+              </div>
             </div>
           </div>
         </section>

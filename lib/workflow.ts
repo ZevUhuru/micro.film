@@ -8,8 +8,11 @@ export const VIDEO_MODEL_ID = "seedance-2.0";
  * minutes total. A micro scene is the unit: 45–90 seconds, 9:16, locked to
  * a character. The exact micro scene count is a creator choice.
  *
- * The first 3 micro scenes are free. The rest unlock with a Pass or an
- * All-access subscription.
+ * micro.film is for the people making the films: brands, agencies,
+ * publishers, and independent filmmakers. The studio at /studio is the
+ * production tool; the showcase at /watch proves what the platform can
+ * do. Public surfaces do not mention pricing — commercial conversations
+ * happen via the Talk to us CTA.
  *
  * We make films, not shows. Do not introduce "episode" or "series" as
  * product nouns. The unit is always called a "micro scene" in copy;
@@ -21,9 +24,8 @@ export const SCENE_DURATION_RANGE = "45–90s" as const;
 export const SCENE_DURATION_DEFAULT = "90s" as const;
 export const ASPECT_RATIO = "9:16" as const;
 
-export const FREE_SCENES = 3 as const;
-export const PASS_PRICE = "$2.49" as const;
-export const SUBSCRIPTION_PRICE = "$9.99/mo" as const;
+export const CONTACT_EMAIL = "studio@micro.film" as const;
+export const CONTACT_HREF = `mailto:${CONTACT_EMAIL}` as const;
 
 /**
  * Legacy aliases.
@@ -35,25 +37,31 @@ export const SUBSCRIPTION_PRICE = "$9.99/mo" as const;
 export const FILM_MAX_DURATION = FILM_TOTAL_DURATION;
 export const SCENE_DURATION = SCENE_DURATION_RANGE;
 
-/** The three-step pipeline shown across the marketing and studio surfaces. */
+/** The four-step pipeline shown across the marketing and studio surfaces. */
 export const workflowSteps = [
   {
     eyebrow: "01",
-    title: "Cast a character",
+    title: "Research",
     description:
-      "Generate a character reference sheet locked to face, wardrobe, and lighting so every micro scene stays on the same person.",
+      "Pull references, mood, and the through-line. Define the world the film lives in before the camera turns on.",
   },
   {
     eyebrow: "02",
-    title: "Write the micro scenes",
+    title: "Develop",
     description:
-      "Compose 45–90 second micro scenes. Each one is a single beat: location, action, camera move, and the line that lands the moment.",
+      "Cast a character with a locked reference sheet, write each micro scene as a single beat, and lock the shot list.",
   },
   {
     eyebrow: "03",
-    title: "Cut and release",
+    title: "Generate",
     description:
-      "Stitch your micro scenes into a ~15 minute micro film. Release the first three free, lock the rest behind a Pass, and post the trailer to TikTok, YouTube Shorts, and Instagram Reels.",
+      "Render every 45–90 second micro scene at 9:16 with the same character, wardrobe, and lighting from end to end.",
+  },
+  {
+    eyebrow: "04",
+    title: "Stitch",
+    description:
+      "Cut the micro scenes into a finished ~15 minute micro film, ready for a campaign, a publisher channel, or your own reel.",
   },
 ] as const;
 
@@ -64,27 +72,27 @@ export const platforms = [
   { name: "Instagram Reels", handle: "@yourbrand", aspect: ASPECT_RATIO, duration: SCENE_DURATION_RANGE },
 ] as const;
 
-/** Creator categories the product supports. */
+/** The four creator / publisher segments the studio is built for. */
 export const useCases = [
-  {
-    title: "Filmmakers",
-    description:
-      "Tell a fifteen-minute story across a dozen micro scenes — long enough for a real arc, compact enough to ship in a week.",
-  },
-  {
-    title: "Music artists",
-    description:
-      "Turn an album into a micro film: one micro scene per track, ninety seconds each, every frame on brand.",
-  },
   {
     title: "Brands",
     description:
-      "Run a cinematic micro film instead of an ad. Free trailer micro scenes, paid finale, recurring characters.",
+      "Ship a fifteen-minute cinematic micro film instead of a thirty-second ad cut. Same character across every micro scene, every campaign.",
   },
   {
-    title: "Creators",
+    title: "Agencies",
     description:
-      "Build a film your audience returns for, micro scene by micro scene. Monetize the back half with a Pass.",
+      "Add vertical filmmaking to what you offer your clients. Run the studio in-house or commission us to build the film with you.",
+  },
+  {
+    title: "Publishers",
+    description:
+      "Feed a vertical-first content pipeline. Research, develop, generate, and stitch on the same platform your editors already use.",
+  },
+  {
+    title: "Filmmakers",
+    description:
+      "A studio in your pocket. Tell a fifteen-minute story across a dozen micro scenes without raising a budget, hiring a crew, or losing the frame.",
   },
 ] as const;
 
@@ -126,20 +134,20 @@ export const filmConcepts = [
 export const testimonials = [
   {
     quote:
-      "I wrote the first micro scene during lunch, rendered it, and posted the trailer before my coffee was cold.",
-    role: "Independent filmmaker",
+      "We shipped a campaign micro film in a week. One character, twelve micro scenes, a finished cut on Friday.",
+    role: "Creative director, agency",
   },
   {
     quote:
       "The character stays the same across every micro scene. That alone changes everything.",
-    role: "Music artist",
+    role: "Independent filmmaker",
   },
 ] as const;
 
 /** Defaults for the studio form so the page never looks empty. */
 export const studioDefaults = {
   title: "Last Light on Sunset",
-  audience: "Trailer micro scenes posted to TikTok and Reels. Full film unlocked with a Pass.",
+  audience: "Vertical 9:16 cut for the campaign reel and the publisher's vertical channel.",
   logline:
     "A street musician closes the case on a long day as the city lights flick on around her.",
   leadCharacter:
@@ -158,28 +166,28 @@ export const blogPosts = [
     category: "Form",
     readTime: "4 min read",
     excerpt:
-      "A micro film is a ~15 minute vertical film, told as a sequence of 45–90 second micro scenes. The first three are free; the rest unlock with a Pass.",
-    deck: "Fifteen minutes. A dozen micro scenes. One story. Trailer free, finale paid.",
+      "A micro film is a ~15 minute vertical film told as a sequence of 45–90 second micro scenes. Built end to end inside one studio: research, develop, generate, stitch.",
+    deck: "Fifteen minutes. A dozen micro scenes. One story. Built end to end in one studio.",
     content: [
       {
         heading: "Define the form",
-        body: "A micro film runs about fifteen minutes total. It is not a meme, not an ad, and not a single quick clip. It is a small finished film with a setup, a turn, and a frame the viewer remembers — split into micro scenes the audience can watch one at a time on a phone.",
+        body: "A micro film runs about fifteen minutes total. It is not a meme, not an ad cut-down, and not a single quick clip. It is a small finished film with a setup, a turn, and a frame the viewer remembers — split into micro scenes the audience can watch one at a time on a phone.",
       },
       {
         heading: "Built from micro scenes",
-        body: "The unit on micro.film is the micro scene: 45–90 seconds, vertical, locked to the cast. A film is a dozen or so micro scenes cut together. The exact count is your call: a punchier film might use ten longer micro scenes, a denser one might use eighteen tighter ones.",
+        body: "The unit on micro.film is the micro scene: 45–90 seconds, vertical, locked to the cast. A film is a dozen or so micro scenes cut together. The exact count is a creator choice: a punchier film might use ten longer micro scenes, a denser one might use eighteen tighter ones.",
       },
       {
-        heading: "Free trailer, paid finale",
-        body: "The first three micro scenes are free — about three or four minutes of story. The rest of the film unlocks with a single Pass for $2.49 or with the $9.99 a month All-access plan. The free wedge is the trailer; the rest is the film.",
+        heading: "Made by the people making the films",
+        body: "micro.film is for brands, agencies, publishers, and independent filmmakers. The studio is the production tool; the in-house showcase is the proof. You can run the whole pipeline yourself or commission us to build the film with you.",
       },
       {
         heading: "Cinematic by default",
         body: "At any length, the language is film: lens choice, light direction, blocking, cut. The product should make those choices easy, not hide them.",
       },
       {
-        heading: "Built to share",
-        body: "Every micro scene exports vertical, ready for TikTok, YouTube Shorts, and Instagram Reels. Trailer cuts go on social. The complete film lives on micro.film.",
+        heading: "Built to ship",
+        body: "Every micro scene exports vertical, ready for TikTok, YouTube Shorts, Instagram Reels, in-app players, and a publisher's CMS. One source cut, every distribution surface.",
       },
     ],
   },
@@ -202,7 +210,7 @@ export const blogPosts = [
       },
       {
         heading: "Continuity is a creative move",
-        body: "When the same person walks into micro scene four, the audience trusts the world. That trust is what makes them buy the Pass for the rest of the film.",
+        body: "When the same person walks into micro scene four, the audience trusts the world. That trust is what makes a micro film feel like a film and not a stitched assembly of takes.",
       },
     ],
   },
@@ -229,7 +237,7 @@ export const blogPosts = [
       },
       {
         heading: "Then the hook",
-        body: "Every micro scene should end on a question or a reveal that the next one answers. Treat the cut into micro scene four like the moment the trailer ends — it has to be worth the Pass.",
+        body: "Every micro scene should end on a question or a reveal that the next one answers. The cut between micro scenes is the work; treat it like an editor would.",
       },
     ],
   },
@@ -251,8 +259,8 @@ export const blogPosts = [
         body: "The opening frame should answer who, where, and what is at stake. Audiences swipe before a slow build can land.",
       },
       {
-        heading: "Trailer on social, film on micro.film",
-        body: "Push your three free micro scenes to TikTok, Shorts, and Reels as a serialized trailer. The full cut, ad-free and uninterrupted, lives on the watch page.",
+        heading: "One source, every surface",
+        body: "A finished micro film cuts into trailer micro scenes for TikTok, Shorts, and Reels, a hero piece for a campaign landing page, and a serialized run on a publisher's vertical feed — all from one source cut.",
       },
     ],
   },

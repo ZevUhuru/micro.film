@@ -7,8 +7,14 @@ it without updating this file in the same change.
 ## 1. Brand essence
 
 micro.film is a cinematic studio for micro films — vertical, ~15 minutes,
-composed of micro scenes. The product should feel like a quiet, premium
-film tool — not a loud entertainment app.
+composed of micro scenes. The product is for **the people making the
+films**: brands, agencies, publishers, and independent filmmakers who
+want to research, develop, generate, and stitch a finished vertical
+micro film end to end.
+
+We are not a consumer streaming app. The site should feel like a quiet,
+premium film tool — and a confident in-house studio whose own work
+proves the platform.
 
 Three brand qualities to protect:
 
@@ -28,15 +34,14 @@ Always use these terms exactly:
 | Micro film   | The form. A ~15-minute vertical film, composed of micro scenes.        |
 | Micro scene  | The unit. 45–90 seconds, 9:16, locked to a character.                  |
 | Cut          | The assembled sequence of micro scenes that make the film.             |
-| Pass         | Single-film unlock. $2.49 unlocks every micro scene in one film.       |
-| All-access   | Subscription. $9.99/mo unlocks every micro scene of every film.        |
+| Project      | A single micro film a creator or team is building inside the studio.   |
+| Showcase     | The in-house library at `/watch` proving what the platform can do.    |
 | Roll camera  | Primary verb for kicking off a render.                                 |
 
 A standard micro film runs **about 15 minutes total**, composed of
 **micro scenes between 45 and 90 seconds each**. The exact count is a
 creator choice — a punchier film might have 10 longer micro scenes, a
-denser one might have 18 tighter ones. The **first 3 micro scenes are
-free**. The rest unlock with a Pass or All-access.
+denser one might have 18 tighter ones.
 
 The vocabulary mirrors the brand. Everything we make is a *micro*
 something — a micro film, a micro scene. Do not weaken that by calling
@@ -52,6 +57,15 @@ Do not use: "video clip", "AI video", "drama clip", "short-form ad",
 "short film", "episode", "series", "scene" on its own as the product
 noun (always **micro scene** in copy; bare "scene" is acceptable only as
 a casual short-form when the context already established it).
+
+### No prices, no paywalls in copy
+
+The public site does **not** mention pricing, free / paid wedges,
+unlocks, passes, or subscriptions. The product is positioned to brands,
+agencies, publishers, and independent filmmakers who either use the
+studio themselves or commission us to build the film for them.
+Commercial conversations happen via the **Talk to us** CTA
+(`mailto:studio@micro.film`), not on the marketing surface.
 
 ## 3. Color palette
 

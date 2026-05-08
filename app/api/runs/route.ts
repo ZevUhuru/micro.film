@@ -1,8 +1,5 @@
 import {
-  FREE_SCENES,
   IMAGE_MODEL_ID,
-  PASS_PRICE,
-  SUBSCRIPTION_PRICE,
   VIDEO_MODEL_ID,
   workflowSteps,
 } from "@/lib/workflow";
@@ -40,11 +37,6 @@ export async function GET() {
       filmTargetMinutes: FILM_TARGET_MINUTES,
       aspectRatio: "9:16",
       platforms: DEFAULT_PLATFORMS,
-    },
-    monetization: {
-      freeScenes: FREE_SCENES,
-      passPrice: PASS_PRICE,
-      subscriptionPrice: SUBSCRIPTION_PRICE,
     },
   });
 }

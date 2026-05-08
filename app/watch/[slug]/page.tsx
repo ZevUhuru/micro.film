@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { FilmStrip, FilmStripBadge } from "@/components/FilmStrip";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { getFilm, listFilms, type FilmScene } from "@/lib/films";
-import { SUBSCRIPTION_PRICE } from "@/lib/workflow";
+import { CONTACT_HREF } from "@/lib/workflow";
 
 type WatchPageProps = {
   params: Promise<{ slug: string }>;
@@ -48,7 +48,7 @@ export default async function WatchPage({ params }: WatchPageProps) {
 
   const currentScene = film.scenes[0];
   const totalScenes = film.scenes.length;
-  const freeCount = film.scenes.filter((scene) => scene.free).length;
+  const releasedCount = film.scenes.filter((scene) => scene.released).length;
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[var(--background)] text-[var(--foreground)]">
@@ -64,7 +64,7 @@ export default async function WatchPage({ params }: WatchPageProps) {
             film={film}
             currentScene={currentScene}
             totalScenes={totalScenes}
-            freeCount={freeCount}
+            releasedCount={releasedCount}
           />
         </section>
       </main>
@@ -166,16 +166,19 @@ function DetailColumn({
   film,
   currentScene,
   totalScenes,
-  freeCount,
+  releasedCount,
 }: {
   film: ReturnType<typeof getFilm> & object;
   currentScene: FilmScene;
   totalScenes: number;
-  freeCount: number;
+  releasedCount: number;
 }) {
   return (
     <div className="space-y-8">
       <header>
+        <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--amber-soft)]">
+          {film.studio}
+        </p>
         <FilmStripBadge label={film.genre} />
         <h1 className="serif mt-5 text-balance text-5xl leading-[1.04] sm:text-6xl">
           {film.title}
@@ -184,7 +187,7 @@ function DetailColumn({
           {film.tagline}
         </p>
         <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/50">
-          {film.totalDuration} · {totalScenes} micro scenes · first {freeCount} free
+          {film.totalDuration} · {totalScenes} micro scenes · {releasedCount} out today
         </p>
       </header>
 
@@ -212,14 +215,13 @@ function DetailColumn({
 
       <ActionRow stats={film.stats} />
 
-      <PassPanel passPrice={film.passPrice} freeCount={freeCount} totalScenes={totalScenes} />
+      <ShowcasePanel />
 
       <SceneGrid
         scenes={film.scenes}
         currentNumber={currentScene.number}
         totalScenes={totalScenes}
-        freeCount={freeCount}
-        passPrice={film.passPrice}
+        releasedCount={releasedCount}
       />
     </div>
   );
@@ -266,45 +268,37 @@ function ActionRow({
   );
 }
 
-function PassPanel({
-  passPrice,
-  freeCount,
-  totalScenes,
-}: {
-  passPrice: string;
-  freeCount: number;
-  totalScenes: number;
-}) {
-  const lockedCount = totalScenes - freeCount;
+function ShowcasePanel() {
   return (
     <section
-      aria-label="Unlock the rest of the film"
+      aria-label="Use the studio for your own film"
       className="rounded-3xl border border-[var(--amber)]/30 bg-[radial-gradient(circle_at_30%_20%,rgba(232,184,106,0.18),transparent_60%),linear-gradient(180deg,#1a1612,#0c0a08)] p-6 sm:p-8"
     >
       <div className="flex flex-wrap items-start justify-between gap-6">
         <div className="max-w-md">
-          <FilmStripBadge label="Unlock the film" />
+          <FilmStripBadge label="Built on micro.film" />
           <h2 className="serif mt-4 text-3xl leading-tight">
-            Watch the next {lockedCount} micro scenes.
+            Want a micro film like this for your campaign?
           </h2>
           <p className="mt-3 text-sm leading-7 text-[var(--foreground)]/70">
-            One Pass unlocks every micro scene of this film for keeps. Or go
-            All-access for {SUBSCRIPTION_PRICE} and watch every micro film.
+            This piece was made end to end on the platform. Run the studio
+            yourself, or hand us the brief and we&rsquo;ll build the film
+            with you.
           </p>
         </div>
         <div className="flex flex-col items-stretch gap-3 sm:items-end">
-          <button
-            type="button"
+          <Link
+            href="/studio"
             className="rounded-full bg-[var(--paper)] px-6 py-3 text-sm font-medium text-[var(--ink)] transition hover:bg-[var(--amber-soft)]"
           >
-            Buy Pass — {passPrice}
-          </button>
-          <button
-            type="button"
+            Open the studio
+          </Link>
+          <Link
+            href={CONTACT_HREF}
             className="rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-[var(--foreground)] transition hover:bg-white/5"
           >
-            All-access — {SUBSCRIPTION_PRICE}
-          </button>
+            Talk to us
+          </Link>
         </div>
       </div>
     </section>
@@ -315,22 +309,21 @@ function SceneGrid({
   scenes,
   currentNumber,
   totalScenes,
-  freeCount,
-  passPrice,
+  releasedCount,
 }: {
   scenes: ReadonlyArray<FilmScene>;
   currentNumber: number;
   totalScenes: number;
-  freeCount: number;
-  passPrice: string;
+  releasedCount: number;
 }) {
+  const upcomingCount = totalScenes - releasedCount;
   return (
     <section aria-label="Micro scenes">
       <header className="flex items-end justify-between">
         <div>
           <h2 className="serif text-2xl leading-tight">All micro scenes</h2>
           <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/55">
-            {totalScenes} micro scenes · {freeCount} free
+            {totalScenes} micro scenes · {releasedCount} out · {upcomingCount} coming soon
           </p>
         </div>
         <nav
@@ -346,11 +339,11 @@ function SceneGrid({
       <ul className="mt-6 grid grid-cols-4 gap-2 sm:grid-cols-6 lg:grid-cols-6">
         {scenes.map((scene) => {
           const isCurrent = scene.number === currentNumber;
-          const status: "current" | "free" | "locked" = isCurrent
+          const status: "current" | "released" | "upcoming" = isCurrent
             ? "current"
-            : scene.free
-              ? "free"
-              : "locked";
+            : scene.released
+              ? "released"
+              : "upcoming";
 
           return (
             <li key={scene.number}>
@@ -361,7 +354,7 @@ function SceneGrid({
       </ul>
 
       <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/45">
-        Micro scenes 01 – {String(freeCount).padStart(2, "0")} free · Unlock the rest with a {passPrice} Pass
+        Released on a rolling cadence — the rest of the film drops over the coming weeks
       </p>
     </section>
   );
@@ -372,7 +365,7 @@ function SceneTile({
   status,
 }: {
   scene: FilmScene;
-  status: "current" | "free" | "locked";
+  status: "current" | "released" | "upcoming";
 }) {
   const baseClasses =
     "group relative flex aspect-square w-full flex-col justify-between overflow-hidden rounded-xl border p-3 text-left transition";
@@ -380,7 +373,7 @@ function SceneTile({
   const stateClasses =
     status === "current"
       ? "border-[var(--amber)]/55 bg-[radial-gradient(circle_at_30%_20%,rgba(232,184,106,0.25),transparent_55%),linear-gradient(180deg,#1a1612,#0c0a08)] text-[var(--foreground)]"
-      : status === "free"
+      : status === "released"
         ? "border-white/12 bg-white/[0.04] text-[var(--foreground)] hover:-translate-y-0.5 hover:border-[var(--amber)]/45"
         : "border-white/10 bg-[var(--background)] text-[var(--foreground)]/55";
 
@@ -408,12 +401,10 @@ function SceneTile({
         <span className="serif text-2xl leading-none">
           {String(scene.number).padStart(2, "0")}
         </span>
-        {status === "locked" ? (
-          <span
-            aria-hidden="true"
-            className="grid size-6 place-items-center rounded-full bg-[var(--crimson)] text-white"
-          >
-            <LockIcon />
+        {status === "upcoming" ? (
+          <span className="flex items-center gap-1 rounded-sm bg-white/10 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-[0.16em] text-[var(--foreground)]/75">
+            <ClockIcon />
+            Soon
           </span>
         ) : status === "current" ? (
           <span className="rounded-sm bg-[var(--amber)] px-1.5 py-0.5 text-[10px] font-medium text-[var(--ink)]">
@@ -421,7 +412,7 @@ function SceneTile({
           </span>
         ) : (
           <span className="rounded-sm bg-[var(--paper)] px-1.5 py-0.5 text-[10px] font-medium text-[var(--ink)]">
-            Free
+            Out
           </span>
         )}
       </div>
@@ -555,21 +546,21 @@ function ShareIcon() {
   );
 }
 
-function LockIcon() {
+function ClockIcon() {
   return (
     <svg
-      width="12"
-      height="12"
+      width="10"
+      height="10"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2.2"
+      strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <rect x="4" y="11" width="16" height="10" rx="2" />
-      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+      <circle cx="12" cy="12" r="9" />
+      <polyline points="12 7 12 12 15 14" />
     </svg>
   );
 }

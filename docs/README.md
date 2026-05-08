@@ -18,16 +18,21 @@ Always use these terms consistently in code, copy, and product surfaces:
 - **Micro film** — the form. A ~15 minute vertical film, composed of micro scenes.
 - **Micro scene** — the unit. 45–90 seconds, 9:16, locked to a character.
 - **Cut** — the assembled sequence of micro scenes that make the film.
-- **Pass** — single-film unlock. $2.49 unlocks every micro scene of one film.
-- **All-access** — subscription. $9.99/mo unlocks every micro scene of every film.
+- **Project** — a single micro film a creator or team is building inside the studio.
+- **Showcase** — the in-house library at `/watch` proving what the platform can do.
 
 We make **films**, not shows. Do not use "episode" or "series" as
-product nouns. The first three micro scenes of every film are free; the
-rest unlocks with a Pass or All-access.
+product nouns.
 
 Do not weaken the unit by calling it a "short scene" — the brand word
 is **micro**. Bare "scene" is acceptable only as a casual short-form
 once context is established.
+
+The product is for the **people making the films**: brands, agencies,
+publishers, and independent filmmakers. The public site does not
+mention pricing, paywalls, passes, or subscriptions. Commercial
+conversations happen via the Talk to us CTA
+(`mailto:studio@micro.film`).
 
 ## Process
 

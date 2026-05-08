@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CONTACT_HREF } from "@/lib/workflow";
 
 type SiteHeaderProps = {
   /** Optional active key for nav highlight. */
@@ -35,12 +36,20 @@ export function SiteHeader({ active = "home" }: SiteHeaderProps) {
           </Link>
         ))}
       </nav>
-      <Link
-        href="/studio"
-        className="rounded-full bg-[var(--paper)] px-4 py-2 text-sm font-medium text-[var(--ink)] transition hover:bg-[var(--amber-soft)]"
-      >
-        Open studio
-      </Link>
+      <div className="flex items-center gap-3">
+        <Link
+          href={CONTACT_HREF}
+          className="hidden rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-[var(--foreground)] transition hover:bg-white/5 sm:inline-flex"
+        >
+          Talk to us
+        </Link>
+        <Link
+          href="/studio"
+          className="rounded-full bg-[var(--paper)] px-4 py-2 text-sm font-medium text-[var(--ink)] transition hover:bg-[var(--amber-soft)]"
+        >
+          Open studio
+        </Link>
+      </div>
     </header>
   );
 }
@@ -67,6 +76,9 @@ export function SiteFooter() {
           </Link>
           <Link href="/blog" className="transition hover:text-[var(--foreground)]">
             Notes
+          </Link>
+          <Link href={CONTACT_HREF} className="transition hover:text-[var(--foreground)]">
+            Talk to us
           </Link>
         </div>
       </div>

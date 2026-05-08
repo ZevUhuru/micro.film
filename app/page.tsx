@@ -3,10 +3,9 @@ import { FilmStrip, FilmStripBadge } from "@/components/FilmStrip";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import {
   ASPECT_RATIO,
+  CONTACT_HREF,
   FILM_TOTAL_DURATION,
-  FREE_SCENES,
   filmConcepts,
-  PASS_PRICE,
   platforms,
   SCENE_DURATION_RANGE,
   testimonials,
@@ -54,22 +53,29 @@ function Hero() {
             </span>
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-8 text-[var(--foreground)]/65">
-            Cast a character, write 45–90 second micro scenes, cut a fifteen
-            minute vertical film. The first three micro scenes are free. The
-            rest of the film unlocks with a {PASS_PRICE} Pass.
+            A studio for vertical micro films, end to end. Research the
+            project, develop the cast and the beats, generate every
+            45–90 second micro scene, stitch the cut. Built for brands,
+            agencies, publishers, and independent filmmakers.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Link
               href="/studio"
               className="rounded-full bg-[var(--paper)] px-6 py-3.5 text-sm font-medium text-[var(--ink)] transition hover:bg-[var(--amber-soft)]"
             >
-              Start a film
+              Open the studio
             </Link>
             <Link
               href="/watch/the-window-across-the-way"
               className="rounded-full border border-white/15 px-6 py-3.5 text-sm font-medium text-[var(--foreground)] transition hover:bg-white/5"
             >
-              Watch a sample film →
+              See the showcase →
+            </Link>
+            <Link
+              href={CONTACT_HREF}
+              className="rounded-full px-6 py-3.5 text-sm font-medium text-[var(--foreground)]/75 transition hover:text-[var(--foreground)]"
+            >
+              Talk to us
             </Link>
           </div>
           <dl className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-white/10 pt-8 text-sm">
@@ -165,9 +171,9 @@ function Concepts() {
       className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28"
     >
       <SectionHeader
-        eyebrow="Sample reel"
+        eyebrow="From the in-house studio"
         title="Three films. A dozen micro scenes each."
-        copy="Each frame below was treated like a real shot: lens, light, blocking. Every film runs about fifteen minutes total — the first three micro scenes free."
+        copy="Each frame below was treated like a real shot: lens, light, blocking. Every film runs about fifteen minutes total — built end to end on the same platform you have access to."
       />
 
       <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -202,17 +208,17 @@ function Concepts() {
       <div className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[var(--amber)]/25 bg-[var(--amber)]/[0.06] p-5">
         <div>
           <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--amber-soft)]">
-            Now watching
+            Showcase
           </p>
           <p className="serif mt-2 text-2xl leading-tight">
-            The Window Across the Way · Micro scenes 1–{FREE_SCENES} free
+            The Window Across the Way · Twelve micro scenes
           </p>
         </div>
         <Link
           href="/watch/the-window-across-the-way"
           className="rounded-full bg-[var(--paper)] px-5 py-3 text-sm font-medium text-[var(--ink)] transition hover:bg-[var(--amber-soft)]"
         >
-          Watch the sample film →
+          See the showcase →
         </Link>
       </div>
     </section>
@@ -224,11 +230,11 @@ function Pipeline() {
     <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
       <SectionHeader
         eyebrow="The pipeline"
-        title="Cast. Write. Cut."
-        copy="One opinionated workflow from a blank slate to a finished film. The product gets out of the way so the film can come together."
+        title="Research. Develop. Generate. Stitch."
+        copy="One opinionated workflow from a blank slate to a finished micro film. The studio gets out of the way so the film can come together."
       />
 
-      <ol className="mt-12 grid gap-4 md:grid-cols-3">
+      <ol className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {workflowSteps.map((step) => (
           <li
             key={step.title}
@@ -256,12 +262,13 @@ function ShareToPlatforms() {
           <div>
             <FilmStripBadge label="Distribution" />
             <h2 className="serif mt-5 max-w-md text-4xl leading-tight">
-              Three free micro scenes. Three timelines.
+              One source cut. Every surface.
             </h2>
             <p className="mt-5 max-w-md text-sm leading-7 text-[var(--foreground)]/65">
-              Vertical 9:16 by default. Your free trailer micro scenes ship to
-              TikTok, YouTube Shorts, and Instagram Reels with platform-aware
-              captions. The complete fifteen-minute film lives on micro.film.
+              Vertical 9:16 by default. The same finished cut delivers
+              trailer micro scenes for TikTok, YouTube Shorts, and Instagram
+              Reels, a hero piece for a campaign landing page, and a
+              serialized run on a publisher&rsquo;s vertical channel.
             </p>
           </div>
 
@@ -352,22 +359,29 @@ function CTA() {
       <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[radial-gradient(circle_at_18%_30%,rgba(232,184,106,0.22),transparent_55%),linear-gradient(180deg,#1a1612,#0c0a08)] p-10 sm:p-14">
         <FilmStripBadge label="Roll camera" />
         <h2 className="serif mt-6 max-w-2xl text-balance text-5xl leading-tight sm:text-6xl">
-          Open the studio and ship your first micro scene tonight.
+          Open the studio. Or commission us to build the film with you.
         </h2>
         <p className="mt-6 max-w-xl text-base leading-7 text-[var(--foreground)]/65">
-          Cast, write, render, cut. Three free micro scenes go on social as
-          a trailer. The full fifteen-minute film unlocks with a Pass.
+          Brands, agencies, publishers, and filmmakers run the pipeline
+          themselves in the studio — or hand us the brief and pick up the
+          finished cut. Either way, you end with a real micro film.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
             href="/studio"
             className="rounded-full bg-[var(--paper)] px-6 py-3.5 text-sm font-medium text-[var(--ink)] transition hover:bg-[var(--amber-soft)]"
           >
-            Start a film
+            Open the studio
+          </Link>
+          <Link
+            href={CONTACT_HREF}
+            className="rounded-full border border-white/15 px-6 py-3.5 text-sm font-medium text-[var(--foreground)] transition hover:bg-white/5"
+          >
+            Talk to us
           </Link>
           <Link
             href="/blog"
-            className="rounded-full border border-white/15 px-6 py-3.5 text-sm font-medium text-[var(--foreground)] transition hover:bg-white/5"
+            className="rounded-full px-6 py-3.5 text-sm font-medium text-[var(--foreground)]/75 transition hover:text-[var(--foreground)]"
           >
             Read the notes
           </Link>

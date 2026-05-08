@@ -50,8 +50,11 @@ function buildTiles(film: Film): Tile[] {
 
 export function FilmStage({ film }: { film: Film }) {
   const tiles = useMemo(() => buildTiles(film), [film]);
+  // Default to the trailer if there is one, otherwise the first micro scene.
   const initialTile =
-    tiles.find((t) => t.kind === "scene" && t.number === 1) ?? tiles[0];
+    tiles.find((t) => t.kind === "trailer") ??
+    tiles.find((t) => t.kind === "scene" && t.number === 1) ??
+    tiles[0];
   const [selectedNumber, setSelectedNumber] = useState<number>(
     initialTile.number,
   );

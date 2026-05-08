@@ -23,6 +23,18 @@ export type FilmScene = {
   released: boolean;
 };
 
+/**
+ * The trailer is the entry point — a short standalone cut that pulls
+ * the viewer into the film. It is **not** a micro scene of the film
+ * itself: the count "8 micro scenes" stays accurate. In the scene
+ * grid the trailer renders as a peer tile numbered 00 with its own
+ * "Trailer" pill so it's visually legible as the appetizer, not a
+ * regular beat.
+ */
+export type FilmTrailer = {
+  duration: string;
+};
+
 export type Film = {
   slug: string;
   title: string;
@@ -43,6 +55,8 @@ export type Film = {
     likes: string;
     saves: string;
   };
+  /** Optional standalone trailer cut that lives at the head of the grid. */
+  trailer?: FilmTrailer;
   scenes: ReadonlyArray<FilmScene>;
 };
 
@@ -86,6 +100,7 @@ const films: Film[] = [
       likes: "12.8k",
       saves: "146.2k",
     },
+    trailer: { duration: "0m 38s" },
     scenes: windowScenes,
   },
 ];

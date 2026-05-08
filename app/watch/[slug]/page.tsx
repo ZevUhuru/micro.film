@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FilmStrip, FilmStripBadge } from "@/components/FilmStrip";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
-import { getFilm, listFilms, type FilmScene } from "@/lib/films";
+import { getFilm, listFilms, type FilmScene, type FilmTrailer } from "@/lib/films";
 import { CONTACT_HREF } from "@/lib/workflow";
 
 type WatchPageProps = {
@@ -219,6 +219,7 @@ function DetailColumn({
 
       <SceneGrid
         scenes={film.scenes}
+        trailer={film.trailer}
         currentNumber={currentScene.number}
         totalScenes={totalScenes}
         releasedCount={releasedCount}
@@ -305,18 +306,49 @@ function ShowcasePanel() {
   );
 }
 
+type TileStatus = "trailer" | "current" | "released" | "upcoming";
+
+type TileData = {
+  number: number;
+  title: string;
+  duration: string;
+  status: TileStatus;
+};
+
 function SceneGrid({
   scenes,
+  trailer,
   currentNumber,
   totalScenes,
   releasedCount,
 }: {
   scenes: ReadonlyArray<FilmScene>;
+  trailer?: FilmTrailer;
   currentNumber: number;
   totalScenes: number;
   releasedCount: number;
 }) {
   const upcomingCount = totalScenes - releasedCount;
+
+  const tiles: TileData[] = [];
+  if (trailer) {
+    tiles.push({
+      number: 0,
+      title: "Trailer",
+      duration: trailer.duration,
+      status: "trailer",
+    });
+  }
+  for (const scene of scenes) {
+    const isCurrent = scene.number === currentNumber;
+    tiles.push({
+      number: scene.number,
+      title: scene.title,
+      duration: scene.duration,
+      status: isCurrent ? "current" : scene.released ? "released" : "upcoming",
+    });
+  }
+
   return (
     <section aria-label="Micro scenes">
       <header className="flex items-end justify-between">
@@ -324,6 +356,7 @@ function SceneGrid({
           <h2 className="serif text-2xl leading-tight">All micro scenes</h2>
           <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/55">
             {totalScenes} micro scenes · {releasedCount} out · {upcomingCount} coming soon
+            {trailer ? " · trailer" : null}
           </p>
         </div>
         <nav
@@ -331,26 +364,17 @@ function SceneGrid({
           className="hidden items-center gap-2 sm:flex"
         >
           <span className="rounded-full bg-[var(--paper)] px-3 py-1 text-xs font-medium text-[var(--ink)]">
-            01 — {String(totalScenes).padStart(2, "0")}
+            {trailer ? "00" : "01"} — {String(totalScenes).padStart(2, "0")}
           </span>
         </nav>
       </header>
 
-      <ul className="mt-6 grid grid-cols-4 gap-3">
-        {scenes.map((scene) => {
-          const isCurrent = scene.number === currentNumber;
-          const status: "current" | "released" | "upcoming" = isCurrent
-            ? "current"
-            : scene.released
-              ? "released"
-              : "upcoming";
-
-          return (
-            <li key={scene.number}>
-              <SceneTile scene={scene} status={status} />
-            </li>
-          );
-        })}
+      <ul className="mt-6 grid grid-cols-3 gap-3">
+        {tiles.map((tile) => (
+          <li key={tile.number}>
+            <SceneTile tile={tile} />
+          </li>
+        ))}
       </ul>
 
       <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/45">
@@ -360,28 +384,29 @@ function SceneGrid({
   );
 }
 
-function SceneTile({
-  scene,
-  status,
-}: {
-  scene: FilmScene;
-  status: "current" | "released" | "upcoming";
-}) {
+function SceneTile({ tile }: { tile: TileData }) {
   const baseClasses =
     "group relative flex aspect-square w-full flex-col justify-between overflow-hidden rounded-xl border p-3 text-left transition";
 
   const stateClasses =
-    status === "current"
+    tile.status === "current"
       ? "border-[var(--amber)]/55 bg-[radial-gradient(circle_at_30%_20%,rgba(232,184,106,0.25),transparent_55%),linear-gradient(180deg,#1a1612,#0c0a08)] text-[var(--foreground)]"
-      : status === "released"
-        ? "border-white/12 bg-white/[0.04] text-[var(--foreground)] hover:-translate-y-0.5 hover:border-[var(--amber)]/45"
-        : "border-white/10 bg-[var(--background)] text-[var(--foreground)]/55";
+      : tile.status === "trailer"
+        ? "border-[var(--amber)]/35 bg-[radial-gradient(circle_at_70%_85%,rgba(232,184,106,0.12),transparent_60%)] text-[var(--foreground)] hover:-translate-y-0.5 hover:border-[var(--amber)]/65"
+        : tile.status === "released"
+          ? "border-white/12 bg-white/[0.04] text-[var(--foreground)] hover:-translate-y-0.5 hover:border-[var(--amber)]/45"
+          : "border-white/10 bg-[var(--background)] text-[var(--foreground)]/55";
+
+  const ariaLabel =
+    tile.status === "trailer"
+      ? `Trailer · ${tile.duration}`
+      : `Micro scene ${tile.number}: ${tile.title}`;
 
   return (
     <button
       type="button"
-      aria-label={`Micro scene ${scene.number}: ${scene.title}`}
-      title={scene.title}
+      aria-label={ariaLabel}
+      title={tile.title}
       className={`${baseClasses} ${stateClasses}`}
     >
       {/* Sprocket edge motif on the top */}
@@ -399,14 +424,18 @@ function SceneTile({
 
       <div className="flex items-center justify-between">
         <span className="serif text-2xl leading-none">
-          {String(scene.number).padStart(2, "0")}
+          {String(tile.number).padStart(2, "0")}
         </span>
-        {status === "upcoming" ? (
+        {tile.status === "trailer" ? (
+          <span className="rounded-sm border border-[var(--amber)]/55 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-[0.16em] text-[var(--amber-soft)]">
+            Trailer
+          </span>
+        ) : tile.status === "upcoming" ? (
           <span className="flex items-center gap-1 rounded-sm bg-white/10 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-[0.16em] text-[var(--foreground)]/75">
             <ClockIcon />
             Soon
           </span>
-        ) : status === "current" ? (
+        ) : tile.status === "current" ? (
           <span className="rounded-sm bg-[var(--amber)] px-1.5 py-0.5 text-[10px] font-medium text-[var(--ink)]">
             Now
           </span>
@@ -418,7 +447,7 @@ function SceneTile({
       </div>
 
       <p className="line-clamp-2 text-[11px] leading-snug text-[var(--foreground)]/60 group-hover:text-[var(--foreground)]/80">
-        {scene.title}
+        {tile.title}
       </p>
     </button>
   );

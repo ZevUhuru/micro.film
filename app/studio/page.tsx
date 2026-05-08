@@ -3,8 +3,11 @@ import Link from "next/link";
 import { FilmStrip, FilmStripBadge } from "@/components/FilmStrip";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import {
+  ASPECT_RATIO,
+  FILM_MAX_DURATION,
   IMAGE_MODEL_ID,
   platforms,
+  SCENE_DURATION,
   studioDefaults,
   VIDEO_MODEL_ID,
   workflowSteps,
@@ -13,12 +16,12 @@ import {
 export const metadata: Metadata = {
   title: "Studio",
   description:
-    "Cast a character, write a fifteen-second scene, and render a vertical micro film for TikTok, YouTube Shorts, and Instagram Reels.",
+    "Cast a character, write 15-second scenes, and cut a vertical micro film up to three minutes for TikTok, YouTube Shorts, and Instagram Reels.",
   alternates: { canonical: "/studio" },
   openGraph: {
     title: "micro.film Studio",
     description:
-      "Cast, write, and render a cinematic micro film in three steps.",
+      "Cast, write, and assemble a cinematic micro film in three steps.",
     url: "https://micro.film/studio",
     siteName: "micro.film",
     type: "website",
@@ -56,8 +59,8 @@ const fields: Array<{
     rows: 2,
   },
   {
-    label: "15-second scene",
-    hint: "One location, one turn, one frame to remember.",
+    label: "Scene 01 (15s)",
+    hint: "One location, one turn, one frame to remember. Add more scenes after this one.",
     value: studioDefaults.sceneBeat,
     rows: 4,
   },
@@ -124,15 +127,15 @@ export default function StudioPage() {
             <dl className="mt-3 grid gap-1 font-mono text-[12px] text-[var(--foreground)]/55">
               <div className="flex justify-between">
                 <dt>Format</dt>
-                <dd>9:16</dd>
+                <dd>{ASPECT_RATIO}</dd>
               </div>
               <div className="flex justify-between">
-                <dt>Runtime</dt>
-                <dd>15s</dd>
+                <dt>Film</dt>
+                <dd>{FILM_MAX_DURATION}</dd>
               </div>
               <div className="flex justify-between">
-                <dt>Take</dt>
-                <dd>01</dd>
+                <dt>Scene</dt>
+                <dd>{SCENE_DURATION}</dd>
               </div>
             </dl>
           </div>

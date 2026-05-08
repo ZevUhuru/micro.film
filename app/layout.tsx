@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s — micro.film",
   },
   description:
-    "Cast a character, write a scene, render a 15-second cinematic clip. Share it as a TikTok, YouTube Short, or Instagram Reel.",
+    "Cast a character, write your scenes, cut a vertical micro film up to three minutes. Share it as a TikTok, YouTube Short, or Instagram Reel.",
   alternates: {
     canonical: "/",
   },

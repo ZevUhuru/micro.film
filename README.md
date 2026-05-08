@@ -1,15 +1,16 @@
 # micro.film
 
-AI-native micro-drama studio for phone-native serialized stories.
+A cinematic studio for short-form film. Cast a character, write scenes, and
+cut a vertical micro film up to three minutes long for TikTok, YouTube
+Shorts, and Instagram Reels.
 
-The first MVP wedge is a production workflow for creators building serialized
-vertical dramas for Black American women: generate character reference sheets
-with ChatGPT Images 2.0, turn story beats into Seedance-ready prompts, then
-queue a 15-second consistent-character clip.
+## Vocabulary
+
+- **Micro film** — the form. Vertical, ≤ 3 minutes, fully composed.
+- **Scene** — the render unit. 15 seconds, 9:16, locked to a character.
+- **Cut** — the assembled sequence of scenes that make the film.
 
 ## Getting Started
-
-Run the development server:
 
 ```bash
 npm run dev
@@ -21,15 +22,17 @@ Open [http://localhost:3000](http://localhost:3000).
 
 - `/` — landing page and product positioning.
 - `/studio` — prototype creator interface.
-- `/api/runs` — starter run contract for clip creation.
+- `/blog` and `/blog/[slug]` — editorial notes on the form and craft.
+- `/api/runs` — starter run contract for scene + film orchestration.
 
 ## MVP Pipeline
 
-1. Capture the series premise, audience, character archetypes, and first scene.
-2. Generate a character reference sheet using `gpt-image-2`.
-3. Build a 15-second Seedance prompt from the story template.
-4. Queue video generation with `seedance-2.0`.
-5. Review the clip and export to TikTok, YouTube Shorts, or Instagram Reels.
+1. Capture the film premise and lead character.
+2. Generate a character reference sheet with `gpt-image-2`.
+3. Write each 15-second scene from the studio slate.
+4. Render every scene with `seedance-2.0`.
+5. Cut the scenes into a finished micro film and export it to TikTok,
+   YouTube Shorts, or Instagram Reels.
 
 Provider calls are not wired yet. The app defines the product surface and API
 shape so the production pipeline can be connected once available.
@@ -46,5 +49,4 @@ npm run build
 
 - Keep provider orchestration outside the public UI layer.
 - Do not use floating model aliases like `latest`.
-- Treat the audience wedge with specificity and respect; build templates around
-  story functions, not stereotypes.
+- A micro film is a film, not a clip. Copy and UI should reflect that.

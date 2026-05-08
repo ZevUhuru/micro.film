@@ -1,33 +1,41 @@
 export const IMAGE_MODEL_ID = "gpt-image-2";
 export const VIDEO_MODEL_ID = "seedance-2.0";
 
+/**
+ * The form vs the render unit. A micro film is the finished piece (under three
+ * minutes). A scene is the per-render building block (15 seconds, vertical).
+ */
+export const FILM_MAX_DURATION = "≤ 3 min" as const;
+export const SCENE_DURATION = "15s" as const;
+export const ASPECT_RATIO = "9:16" as const;
+
 /** The three-step pipeline shown across the marketing and studio surfaces. */
 export const workflowSteps = [
   {
     eyebrow: "01",
     title: "Cast a character",
     description:
-      "Generate a character reference sheet locked to face, wardrobe, and lighting so every shot stays on the same person.",
+      "Generate a character reference sheet locked to face, wardrobe, and lighting so every scene stays on the same person.",
   },
   {
     eyebrow: "02",
-    title: "Write the scene",
+    title: "Write the scenes",
     description:
-      "Compose a 15-second scene with location, action, camera move, and the line that lands the moment.",
+      "Compose 15-second scenes with location, action, camera move, and the line that lands the moment.",
   },
   {
     eyebrow: "03",
-    title: "Render and share",
+    title: "Cut and share",
     description:
-      "Render a vertical clip and post it straight to TikTok, YouTube Shorts, or Instagram Reels.",
+      "Stitch your scenes into a micro film up to three minutes long, then post it to TikTok, YouTube Shorts, and Instagram Reels.",
   },
 ] as const;
 
 /** Distribution surfaces highlighted across the site. */
 export const platforms = [
-  { name: "TikTok", handle: "@yourhandle", aspect: "9:16", duration: "15s" },
-  { name: "YouTube Shorts", handle: "@yourchannel", aspect: "9:16", duration: "15s" },
-  { name: "Instagram Reels", handle: "@yourbrand", aspect: "9:16", duration: "15s" },
+  { name: "TikTok", handle: "@yourhandle", aspect: ASPECT_RATIO, duration: FILM_MAX_DURATION },
+  { name: "YouTube Shorts", handle: "@yourchannel", aspect: ASPECT_RATIO, duration: FILM_MAX_DURATION },
+  { name: "Instagram Reels", handle: "@yourbrand", aspect: ASPECT_RATIO, duration: FILM_MAX_DURATION },
 ] as const;
 
 /** Creator categories the product supports. Replaces drama-only framing. */
@@ -46,7 +54,7 @@ export const useCases = [
   },
   {
     title: "Creators",
-    description: "Tell a serialized story in 15-second beats your audience returns for.",
+    description: "Tell a serialized story scene by scene that your audience returns for.",
   },
 ] as const;
 
@@ -55,8 +63,9 @@ export const filmConcepts = [
   {
     title: "Last Light on Sunset",
     genre: "Drama",
-    runtime: "15s",
-    aspect: "9:16",
+    runtime: "1m 45s",
+    scenes: 7,
+    aspect: ASPECT_RATIO,
     logline:
       "A street musician closes the case on a long day as the city lights flick on around her.",
     tone: "from-[#3b2a1d] via-[#4d2a18] to-[#0c0a08]",
@@ -64,8 +73,9 @@ export const filmConcepts = [
   {
     title: "The Long Walk Home",
     genre: "Slice of life",
-    runtime: "15s",
-    aspect: "9:16",
+    runtime: "2m 15s",
+    scenes: 9,
+    aspect: ASPECT_RATIO,
     logline:
       "A father carries his sleeping son across a quiet block, every window an entire lifetime.",
     tone: "from-[#1f2a35] via-[#2b3a4a] to-[#0c0a08]",
@@ -73,8 +83,9 @@ export const filmConcepts = [
   {
     title: "Cassette",
     genre: "Music film",
-    runtime: "15s",
-    aspect: "9:16",
+    runtime: "2m 45s",
+    scenes: 11,
+    aspect: ASPECT_RATIO,
     logline:
       "A producer presses play on a tape that brings back the room, the people, and the year.",
     tone: "from-[#2c1a2a] via-[#4a1f3a] to-[#0c0a08]",
@@ -116,20 +127,24 @@ export const blogPosts = [
     category: "Form",
     readTime: "4 min read",
     excerpt:
-      "A micro film is a short cinematic piece, often vertical, often under thirty seconds, designed to feel like a real moment from a real story.",
-    deck: "It is not an ad. It is not a meme. It is a moment that earns its frame.",
+      "A micro film is a short cinematic piece, typically under three minutes, told as a sequence of intentional scenes rather than a single quick clip.",
+    deck: "Short film, not short clip. Under three minutes, fully composed, every scene earned.",
     content: [
       {
-        heading: "Short is not small",
-        body: "A micro film respects the runtime by treating every second like real screen time. The frame is composed, the light is intentional, the character has a thought we can see.",
+        heading: "Define the form",
+        body: "A micro film runs under three minutes. It is not a meme, not an ad, and not a single fifteen-second take. It is a small, finished film with a beginning, a turn, and a frame the viewer remembers.",
+      },
+      {
+        heading: "Built from scenes",
+        body: "The render unit on micro.film is a 15-second vertical scene. A film is one or more of those scenes cut together. Three scenes makes a vignette. Eight makes a complete two-minute story.",
       },
       {
         heading: "Cinematic by default",
-        body: "Even at fifteen seconds, the language is film: lens choice, light direction, blocking, cut. The product should make those choices easy, not hide them.",
+        body: "At any length, the language is film: lens choice, light direction, blocking, cut. The product should make those choices easy, not hide them.",
       },
       {
         heading: "Built to share",
-        body: "The output is a vertical clip ready for TikTok, YouTube Shorts, and Instagram Reels. Not a placeholder for an edit you will do later.",
+        body: "The output is vertical, ready for TikTok, YouTube Shorts, and Instagram Reels. Not a placeholder for an edit you will do later.",
       },
     ],
   },
@@ -162,8 +177,8 @@ export const blogPosts = [
     category: "Writing",
     readTime: "5 min read",
     excerpt:
-      "A short scene is a small space with a tall ceiling. One location, one decision, one frame the viewer remembers.",
-    deck: "Compress without losing the moment.",
+      "Each scene is a small space with a tall ceiling. One location, one decision, one frame the viewer remembers — and one of several scenes that compose the full micro film.",
+    deck: "Write the unit, then assemble the film.",
     content: [
       {
         heading: "One location",
@@ -176,6 +191,10 @@ export const blogPosts = [
       {
         heading: "One frame to remember",
         body: "Design the shot you want screenshotted. That image is the poster, the thumbnail, and the reason the viewer comes back for the next one.",
+      },
+      {
+        heading: "Then cut to the next scene",
+        body: "A micro film is several of these scenes in a row. Plan the handoff: where the next scene picks up, who is in it, and what the previous frame promised.",
       },
     ],
   },

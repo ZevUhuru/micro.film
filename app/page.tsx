@@ -2,8 +2,11 @@ import Link from "next/link";
 import { FilmStrip, FilmStripBadge } from "@/components/FilmStrip";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import {
+  ASPECT_RATIO,
+  FILM_MAX_DURATION,
   filmConcepts,
   platforms,
+  SCENE_DURATION,
   testimonials,
   useCases,
   workflowSteps,
@@ -49,9 +52,9 @@ function Hero() {
             </span>
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-8 text-[var(--foreground)]/65">
-            Cast a character, write a fifteen-second scene, render a cinematic
-            vertical clip. Post it to TikTok, YouTube Shorts, and Instagram
-            Reels in one move.
+            Cast a character, write your scenes, cut a vertical micro film up
+            to three minutes long. Post it to TikTok, YouTube Shorts, and
+            Instagram Reels in one move.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Link
@@ -68,9 +71,9 @@ function Hero() {
             </Link>
           </div>
           <dl className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-white/10 pt-8 text-sm">
-            <Stat term="Runtime" value="15s" />
-            <Stat term="Format" value="9:16" />
-            <Stat term="Steps" value="3" />
+            <Stat term="Film" value={FILM_MAX_DURATION} />
+            <Stat term="Scene" value={SCENE_DURATION} />
+            <Stat term="Format" value={ASPECT_RATIO} />
           </dl>
         </div>
 
@@ -107,7 +110,7 @@ function HeroFilmCard() {
             />
             <div className="relative flex w-full items-end justify-between text-xs text-[var(--foreground)]/85">
               <div className="font-mono uppercase tracking-[0.22em]">
-                Scene 01
+                Scene 01 / 07
               </div>
               <div className="font-mono uppercase tracking-[0.22em]">
                 00:15
@@ -173,8 +176,10 @@ function Concepts() {
           >
             <div className="flex aspect-[3/4] flex-col justify-between rounded-xl border border-white/10 bg-black/15 p-5">
               <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/65">
-                <span>Reel {String(index + 1).padStart(2, "0")}</span>
-                <span>{film.runtime} · {film.aspect}</span>
+                <span>Film {String(index + 1).padStart(2, "0")}</span>
+                <span>
+                  {film.runtime} · {film.scenes} scenes
+                </span>
               </div>
               <div>
                 <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--amber-soft)]">
@@ -232,12 +237,12 @@ function ShareToPlatforms() {
           <div>
             <FilmStripBadge label="Distribution" />
             <h2 className="serif mt-5 max-w-md text-4xl leading-tight">
-              One render. Three timelines.
+              One cut. Three timelines.
             </h2>
             <p className="mt-5 max-w-md text-sm leading-7 text-[var(--foreground)]/65">
-              Vertical 9:16 by default. The same file is ready for TikTok,
-              YouTube Shorts, and Instagram Reels with platform-aware captions
-              and safe areas.
+              Vertical 9:16 by default. Your finished micro film is ready for
+              TikTok, YouTube Shorts, and Instagram Reels with platform-aware
+              captions and safe areas.
             </p>
           </div>
 

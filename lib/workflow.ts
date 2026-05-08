@@ -96,17 +96,24 @@ export const useCases = [
   },
 ] as const;
 
-/** Sample film concepts shown as cinematic posters on the landing page. */
+/**
+ * Sample film concepts shown as cinematic posters on the landing page.
+ * Entries with a `slug` are real Micro Film Studios films watchable at
+ * /watch/{slug} and render with the actual box art (looked up via
+ * `getFilm`). Entries without a slug are concept-only — they render
+ * with the gradient + title card as a coming-soon teaser.
+ */
 export const filmConcepts = [
   {
-    title: "Last Light on Sunset",
-    genre: "Drama",
+    slug: "the-window-across-the-way",
+    title: "The Window Across the Way",
+    genre: "Thriller",
     runtime: "9 min",
     scenes: 8,
     aspect: ASPECT_RATIO,
     logline:
-      "A street musician closes the case on a long day as the city lights flick on around her.",
-    tone: "from-[#3b2a1d] via-[#4d2a18] to-[#0c0a08]",
+      "A late-shift nurse notices the third-floor window stays lit every night — and decides to look back.",
+    tone: "from-[#3a2316] via-[#1a110b] to-[#06050a]",
   },
   {
     title: "The Long Walk Home",
@@ -146,16 +153,16 @@ export const testimonials = [
 
 /** Defaults for the studio form so the page never looks empty. */
 export const studioDefaults = {
-  title: "Last Light on Sunset",
-  audience: "Vertical 9:16 cut for the campaign reel and the publisher's vertical channel.",
+  title: "The Window Across the Way",
+  audience: "Vertical 9:16 cut for a publisher's thriller channel and the campaign reel.",
   logline:
-    "A street musician closes the case on a long day as the city lights flick on around her.",
+    "A late-shift nurse notices the third-floor window stays lit every night — and decides to look back.",
   leadCharacter:
-    "Maya, late twenties, weathered jean jacket over a black tee, silver hoops, soft natural curls, warm brown skin lit by a low golden hour sun.",
+    "Eli, late twenties, dark scrubs under a long charcoal coat, hair tied back, watchful eyes, lit by the cold blue of a 14th-floor kitchen window above a wet city street.",
   supportingCharacter:
-    "City sound: a distant subway, someone laughing across the street, a passing bike bell.",
+    "City sound: a distant subway, a faraway car alarm, the low hum of a refrigerator at 3 a.m.",
   sceneBeat:
-    "Micro scene 01 — Maya snaps her guitar case shut on a corner of Sunset Boulevard. She looks up as the streetlights flicker on. Camera pulls back slowly. She allows herself a small smile. End on the wide shot.",
+    "Micro scene 01 — Eli stands at her kitchen window above the city. Across the way, a third-floor window glows steady amber. She sets the kettle down. She watches. End on her reflection in the glass.",
 } as const;
 
 /** Blog editorial entries with sample sections used on the detail page. */

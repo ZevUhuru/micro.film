@@ -51,16 +51,14 @@ function Hero() {
         <div>
           <FilmStripBadge label="Now showing — v0.1" />
           <h1 className="mt-7 max-w-2xl text-balance text-5xl font-normal leading-[1.02] tracking-[-0.02em] text-[var(--foreground)] sm:text-6xl lg:text-7xl">
-            <span className="serif italic">Make</span> a micro film.{" "}
-            <span className="text-[var(--foreground)]/60">
-              A handful of micro scenes. Up to ten minutes. One story.
-            </span>
+            <span className="serif italic">Make</span> a micro film.
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-8 text-[var(--foreground)]/65">
-            A studio for vertical micro films, end to end. Research the
-            project, develop the cast and the beats, generate every
-            45–90 second micro scene, stitch the cut. Built for brands,
-            agencies, publishers, and independent filmmakers.
+            A studio for the form,{" "}
+            <span className="text-[var(--foreground)]/85">
+              built for the AI era.
+            </span>{" "}
+            For brands, agencies, publishers, and independent filmmakers.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Link
@@ -185,32 +183,81 @@ function Concepts() {
       />
 
       <div className="mt-12 grid gap-5 md:grid-cols-3">
-        {filmConcepts.map((film, index) => (
-          <article
-            key={film.title}
-            className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b ${film.tone} p-1`}
-          >
-            <div className="flex aspect-[3/4] flex-col justify-between rounded-xl border border-white/10 bg-black/15 p-5">
-              <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/65">
-                <span>Film {String(index + 1).padStart(2, "0")}</span>
-                <span>
-                  {film.runtime} · {film.scenes} micro scenes
+        {filmConcepts.map((film, index) => {
+          const slug = "slug" in film ? film.slug : undefined;
+          const linkedFilm = slug ? getFilm(slug) : undefined;
+          const cover = linkedFilm?.cover;
+          const filmNumber = `Film ${String(index + 1).padStart(2, "0")}`;
+          const meta = `${film.runtime} · ${film.scenes} micro scenes`;
+
+          const cardInner = cover ? (
+            <div className="relative aspect-[3/4] overflow-hidden rounded-xl border border-white/10 bg-black">
+              <Image
+                src={cover.src}
+                alt={cover.alt}
+                fill
+                sizes="(min-width: 1024px) 320px, (min-width: 768px) 33vw, 92vw"
+                className="object-cover"
+              />
+            </div>
+          ) : (
+            <div className="relative aspect-[3/4] overflow-hidden rounded-xl border border-white/10 bg-black/15">
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-[radial-gradient(circle_at_52%_26%,rgba(244,238,226,0.12),transparent_36%),linear-gradient(180deg,rgba(255,255,255,0.03),rgba(0,0,0,0.28))]"
+              />
+            </div>
+          );
+
+          const cardCaption = (
+            <div className="mt-3 rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(244,238,226,0.055),rgba(244,238,226,0.02))] p-4 shadow-[0_18px_70px_rgba(0,0,0,0.22)] backdrop-blur">
+              <div className="flex items-start justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--foreground)]/48">
+                <span>{filmNumber}</span>
+                <span className="text-right">{meta}</span>
+              </div>
+              <div className="mt-5 flex items-start justify-between gap-4">
+                <div className="min-w-0">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--amber-soft)]">
+                    {film.genre}
+                  </p>
+                  <h3 className="serif mt-2 text-2xl leading-tight text-[var(--foreground)]">
+                    {film.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-[var(--foreground)]/65">
+                    {film.logline}
+                  </p>
+                </div>
+                <span className="shrink-0 rounded-full border border-[var(--amber)]/35 bg-[var(--amber)]/12 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--amber-soft)] shadow-[0_0_24px_rgba(232,184,106,0.12)]">
+                  {slug ? "Watch" : "Soon"}
                 </span>
               </div>
-              <div>
-                <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--amber-soft)]">
-                  {film.genre}
-                </p>
-                <h3 className="serif mt-3 text-3xl leading-tight text-[var(--foreground)]">
-                  {film.title}
-                </h3>
-                <p className="mt-4 text-sm leading-6 text-[var(--foreground)]/70">
-                  {film.logline}
-                </p>
-              </div>
             </div>
-          </article>
-        ))}
+          );
+
+          const cardShell = (
+            <article className="group">
+              <div
+                className={`relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b ${film.tone} p-1 shadow-[0_24px_80px_rgba(0,0,0,0.28)] transition group-hover:border-[var(--amber)]/35`}
+              >
+                {cardInner}
+              </div>
+              {cardCaption}
+            </article>
+          );
+
+          return slug ? (
+            <Link
+              key={film.title}
+              href={`/watch/${slug}`}
+              aria-label={`Watch ${film.title}`}
+              className="block transition hover:opacity-95"
+            >
+              {cardShell}
+            </Link>
+          ) : (
+            <div key={film.title}>{cardShell}</div>
+          );
+        })}
       </div>
 
       <div className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[var(--amber)]/25 bg-[var(--amber)]/[0.06] p-5">

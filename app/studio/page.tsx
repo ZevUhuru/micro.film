@@ -116,10 +116,11 @@ export default function StudioPage() {
               <span className="italic">Roll</span> a film, end to end.
             </h1>
             <p className="mt-5 max-w-xl text-base leading-7 text-[var(--foreground)]/65">
-              Write the screenplay, lock the character, queue the
-              render, stitch the cut. A handful of 45–90 second micro
-              scenes into a vertical film of up to ten minutes — for a
-              campaign, a publisher channel, or your own reel.
+              Write the screenplay with assistance, lock the character,
+              queue the render on the latest video models, stitch the
+              cut. A handful of 45–90 second micro scenes into a
+              vertical film of up to ten minutes — for a campaign, a
+              publisher channel, or your own reel.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <Link

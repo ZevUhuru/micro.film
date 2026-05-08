@@ -16,6 +16,15 @@ We are not a consumer streaming app. The site should feel like a quiet,
 premium film tool — and **Micro Film Studios**, the confident
 production house whose own films at `/watch` prove the platform.
 
+micro.film is **built for the AI era**. The whole pipeline runs on
+generative models — screenplay assistance, ChatGPT Images 2.0 for
+covers, state-of-the-art video models for scene generation — and we
+can name that fact in copy when it is positioning context. We do
+*not* lean into hype: never "magic," "revolutionary," "AI-powered,"
+"superhuman," "next-gen," or any of the other tells. Name the tools
+when relevant ("ChatGPT Images 2.0," "with assistance," "on the
+latest video models"), and let the work do the talking.
+
 Three brand qualities to protect:
 
 1. **Cinematic.** Warm celluloid blacks, ivory ink, amber as the only true
@@ -58,6 +67,13 @@ single 90-second beat, a tight three-minute essay, a full-length
 nine-minute thriller all qualify. The exact count is a creator choice:
 a punchy three-minute film might be three micro scenes, a full-length
 nine-minute one might be eight tightly-paced beats.
+
+The encyclopedic definition of the form is 8–15 minutes (Baidu Baike,
+*Micro Film / 微电影*); industry critics already place the practical
+ceiling at 10 minutes. We sit at the lower end on purpose. The full
+write-up — definition, four "micros," origin, six recurring genres —
+lives at `/about`. When we cite the form's history or definition in
+public copy, link to `/about`, not to the wiki directly.
 
 The vocabulary mirrors the brand. Everything we make is a *micro*
 something — a micro film, a micro scene. Do not weaken that by calling

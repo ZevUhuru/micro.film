@@ -15,7 +15,7 @@ small and human-readable. Add to it as the product changes.
 
 Always use these terms consistently in code, copy, and product surfaces:
 
-- **Micro film** — the form. A vertical film capped at 10 minutes, composed of micro scenes.
+- **Micro film** — the form. A vertical film capped at 10 minutes, composed of micro scenes. The encyclopedic standard for the form is 8–15 minutes (see the Baidu Baike entry on 微电影 and our `/about` page); we sit at the lower end on purpose so every film stays watchable in one sitting.
 - **Screenplay** — the first deliverable of every micro film. Title, logline, characters, scenes with action and dialogue. Lives at `/studio/screenplay`. Always called a *screenplay*, never a "script."
 - **Cover** — the 9:16 vertical visual identity of a micro film. Generated and edited with ChatGPT Images 2.0. Lives at `/studio/cover`. Always called a *cover*, never a "poster" or "thumbnail" in product copy.
 - **Micro scene** — the unit. 45–90 seconds, 9:16, locked to a character.

@@ -257,7 +257,7 @@ function DurationStandard() {
       </div>
       <p className="mt-10 max-w-3xl text-base leading-8 text-[var(--foreground)]/70">
         Anything from eight to fifteen minutes qualifies as a micro
-        film. We picked ten because it is the gold standard the form's
+        film. We picked ten because it is the gold standard the form&rsquo;s
         own critics have already converged on, and because it keeps
         every film comfortably watchable in a single sitting on a
         phone. A twelve- or fifteen-minute micro film is still a micro

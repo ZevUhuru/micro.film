@@ -45,6 +45,7 @@ Always use these terms exactly:
 | Screenplay   | The first deliverable — title, logline, characters, scenes with action and dialogue. Every micro film starts here. |
 | Cover        | The 9:16 vertical visual identity of a micro film — the poster in the showcase grid, the OG image when shared. Generated and edited with ChatGPT Images 2.0. |
 | Cut          | The assembled sequence of micro scenes that make the film.             |
+| Commercial   | The business-facing wing at `/commercial`: brand films, architectural and estate films, performance creative, publisher campaigns. Use this instead of "ads" or "solutions" in primary navigation. |
 | Project      | A single micro film a creator or team is building inside the studio.   |
 | Showcase     | The library at `/watch` — films produced by Micro Film Studios that prove what the platform can do. |
 | Micro Film Studios | Our in-house production house. The films at `/watch` are credited "From Micro Film Studios." Never abbreviated to "the in-house studio" or "the studio" (the studio means the `/studio` workspace). |
@@ -60,6 +61,12 @@ film. We do **not** call it a "poster," "thumbnail," or "key art" in
 product copy. The verb is *Make the cover.* When we name the model
 in copy ("Edited with ChatGPT Images 2.0"), use that exact spelling —
 not "GPT Image 2," not "DALL·E," not "OpenAI's image model."
+
+Commercial is the business-facing noun. Use it for work that sells
+something: brand films, property films, launch films, performance
+creative, publisher campaigns. It should still feel cinematic. Avoid
+"ads" in primary navigation and avoid generic SaaS vocabulary like
+"solutions" unless we are deep inside a business-facing page.
 
 A micro film is **capped at 10 minutes** and is composed of **micro
 scenes between 45 and 90 seconds each**. Films can run much shorter — a

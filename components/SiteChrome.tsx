@@ -3,11 +3,12 @@ import { CONTACT_HREF } from "@/lib/workflow";
 
 type SiteHeaderProps = {
   /** Optional active key for nav highlight. */
-  active?: "home" | "studio" | "blog" | "about";
+  active?: "home" | "studio" | "commercial" | "blog" | "about";
 };
 
 const navItems = [
   { key: "studio", label: "Studio", href: "/studio" },
+  { key: "commercial", label: "Commercial", href: "/commercial" },
   { key: "blog", label: "Notes", href: "/blog" },
   { key: "about", label: "About", href: "/about" },
 ] as const;
@@ -74,6 +75,9 @@ export function SiteFooter() {
           </Link>
           <Link href="/studio" className="transition hover:text-[var(--foreground)]">
             Studio
+          </Link>
+          <Link href="/commercial" className="transition hover:text-[var(--foreground)]">
+            Commercial
           </Link>
           <Link href="/blog" className="transition hover:text-[var(--foreground)]">
             Notes

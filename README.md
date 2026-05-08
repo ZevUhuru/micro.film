@@ -40,6 +40,7 @@ Open [http://localhost:3000](http://localhost:3000).
 - `/studio` — production interface where projects come together.
 - `/studio/screenplay` — screenplay editor (write with assistance, or generate from a guided prompt).
 - `/studio/cover` — cover workspace (generate + edit 9:16 cover art with ChatGPT Images 2.0).
+- `/commercial` — business-facing commercial studio for brand films, architectural and estate films, performance creative, and publisher campaigns.
 - `/about` — what is a micro film? Definition + four "micros" + origin + how our 10-min cap relates to the 8–15 min standard, sourced from the Baidu Baike entry on 微电影.
 - `/blog` and `/blog/[slug]` — editorial notes on the form and craft.
 - `/watch/[slug]` — Micro Film Studios showcase film page.

@@ -68,6 +68,12 @@ function Hero() {
               Open the studio
             </Link>
             <Link
+              href="/commercial"
+              className="rounded-full border border-[var(--amber)]/35 bg-[var(--amber)]/10 px-6 py-3.5 text-sm font-medium text-[var(--amber-soft)] transition hover:bg-[var(--amber)]/15"
+            >
+              Commercial work →
+            </Link>
+            <Link
               href="/watch/the-window-across-the-way"
               className="rounded-full border border-white/15 px-6 py-3.5 text-sm font-medium text-[var(--foreground)] transition hover:bg-white/5"
             >

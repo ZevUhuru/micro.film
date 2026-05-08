@@ -20,6 +20,7 @@ Always use these terms consistently in code, copy, and product surfaces:
 - **Cover** — the 9:16 vertical visual identity of a micro film. Generated and edited with ChatGPT Images 2.0. Lives at `/studio/cover`. Always called a *cover*, never a "poster" or "thumbnail" in product copy.
 - **Micro scene** — the unit. 45–90 seconds, 9:16, locked to a character.
 - **Cut** — the assembled sequence of micro scenes that make the film.
+- **Commercial** — the business-facing wing at `/commercial`. Use this word for brand films, architectural and estate films, performance creative, publisher campaigns, and other commercial micro-film work. Do not call it "ads" or "solutions" in primary nav.
 - **Project** — a single micro film a creator or team is building inside the studio.
 - **Showcase** — the library at `/watch` of films produced by Micro Film Studios that prove what the platform can do.
 - **Micro Film Studios** — our in-house production house. Every film at `/watch` is credited "From Micro Film Studios." Always written in full; never shortened to "the in-house studio" (which would collide with `/studio`, the production workspace).

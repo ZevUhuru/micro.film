@@ -4,9 +4,11 @@ export const VIDEO_MODEL_ID = "seedance-2.0";
 /**
  * The form vs the unit.
  *
- * A micro film is the finished piece — a vertical film that runs about 15
- * minutes total. A micro scene is the unit: 45–90 seconds, 9:16, locked to
- * a character. The exact micro scene count is a creator choice.
+ * A micro film is the finished piece — a vertical film capped at 10
+ * minutes. Films can run much shorter (a single 90-second beat, a tight
+ * three-minute essay) but they do not exceed the cap. A micro scene is
+ * the unit: 45–90 seconds, 9:16, locked to a character. The exact
+ * micro scene count is a creator choice.
  *
  * micro.film is for the people making the films: brands, agencies,
  * publishers, and independent filmmakers. The studio at /studio is the
@@ -19,7 +21,8 @@ export const VIDEO_MODEL_ID = "seedance-2.0";
  * "scene" without the qualifier is acceptable only as a casual short-form
  * once context is established.
  */
-export const FILM_TOTAL_DURATION = "~15 min" as const;
+export const FILM_MAX_DURATION = "10 min" as const;
+export const FILM_MAX_DURATION_LABEL = "Up to 10 min" as const;
 export const SCENE_DURATION_RANGE = "45–90s" as const;
 export const SCENE_DURATION_DEFAULT = "90s" as const;
 export const ASPECT_RATIO = "9:16" as const;
@@ -28,13 +31,10 @@ export const CONTACT_EMAIL = "studio@micro.film" as const;
 export const CONTACT_HREF = `mailto:${CONTACT_EMAIL}` as const;
 
 /**
- * Legacy aliases.
- *
- * Older imports referenced FILM_MAX_DURATION and SCENE_DURATION. Keep these
- * exported so any straggler import keeps building, but new code should use
- * FILM_TOTAL_DURATION and SCENE_DURATION_RANGE / SCENE_DURATION_DEFAULT.
+ * Legacy alias retained so older imports keep building. New code should
+ * reference FILM_MAX_DURATION (the cap) or FILM_MAX_DURATION_LABEL (UX
+ * label that signals "up to," since not every film hits the cap).
  */
-export const FILM_MAX_DURATION = FILM_TOTAL_DURATION;
 export const SCENE_DURATION = SCENE_DURATION_RANGE;
 
 /** The four-step pipeline shown across the marketing and studio surfaces. */
@@ -61,7 +61,7 @@ export const workflowSteps = [
     eyebrow: "04",
     title: "Stitch",
     description:
-      "Cut the micro scenes into a finished ~15 minute micro film, ready for a campaign, a publisher channel, or your own reel.",
+      "Cut the micro scenes into a finished micro film of up to ten minutes, ready for a campaign, a publisher channel, or your own reel.",
   },
 ] as const;
 
@@ -77,7 +77,7 @@ export const useCases = [
   {
     title: "Brands",
     description:
-      "Ship a fifteen-minute cinematic micro film instead of a thirty-second ad cut. Same character across every micro scene, every campaign.",
+      "Ship a cinematic micro film of up to ten minutes instead of a thirty-second ad cut. Same character across every micro scene, every campaign.",
   },
   {
     title: "Agencies",
@@ -92,7 +92,7 @@ export const useCases = [
   {
     title: "Filmmakers",
     description:
-      "A studio in your pocket. Tell a fifteen-minute story across a dozen micro scenes without raising a budget, hiring a crew, or losing the frame.",
+      "A studio in your pocket. Tell a story up to ten minutes long across a handful of micro scenes without raising a budget, hiring a crew, or losing the frame.",
   },
 ] as const;
 
@@ -101,8 +101,8 @@ export const filmConcepts = [
   {
     title: "Last Light on Sunset",
     genre: "Drama",
-    runtime: FILM_TOTAL_DURATION,
-    scenes: 12,
+    runtime: "9 min",
+    scenes: 8,
     aspect: ASPECT_RATIO,
     logline:
       "A street musician closes the case on a long day as the city lights flick on around her.",
@@ -111,8 +111,8 @@ export const filmConcepts = [
   {
     title: "The Long Walk Home",
     genre: "Slice of life",
-    runtime: FILM_TOTAL_DURATION,
-    scenes: 14,
+    runtime: "8 min",
+    scenes: 9,
     aspect: ASPECT_RATIO,
     logline:
       "A father carries his sleeping son across a quiet block, every window an entire lifetime.",
@@ -121,8 +121,8 @@ export const filmConcepts = [
   {
     title: "Cassette",
     genre: "Music film",
-    runtime: FILM_TOTAL_DURATION,
-    scenes: 11,
+    runtime: "9 min",
+    scenes: 7,
     aspect: ASPECT_RATIO,
     logline:
       "A producer presses play on a tape that brings back the room, the people, and the year.",
@@ -134,7 +134,7 @@ export const filmConcepts = [
 export const testimonials = [
   {
     quote:
-      "We shipped a campaign micro film in a week. One character, twelve micro scenes, a finished cut on Friday.",
+      "We shipped a campaign micro film in a week. One character, eight micro scenes, a finished cut on Friday.",
     role: "Creative director, agency",
   },
   {
@@ -166,16 +166,16 @@ export const blogPosts = [
     category: "Form",
     readTime: "4 min read",
     excerpt:
-      "A micro film is a ~15 minute vertical film told as a sequence of 45–90 second micro scenes. Built end to end inside one studio: research, develop, generate, stitch.",
-    deck: "Fifteen minutes. A dozen micro scenes. One story. Built end to end in one studio.",
+      "A micro film is a vertical film of up to ten minutes, told as a sequence of 45–90 second micro scenes. Built end to end inside one studio: research, develop, generate, stitch.",
+    deck: "Up to ten minutes. A handful of micro scenes. One story. Built end to end in one studio.",
     content: [
       {
         heading: "Define the form",
-        body: "A micro film runs about fifteen minutes total. It is not a meme, not an ad cut-down, and not a single quick clip. It is a small finished film with a setup, a turn, and a frame the viewer remembers — split into micro scenes the audience can watch one at a time on a phone.",
+        body: "A micro film runs up to ten minutes — and many run much shorter. It is not a meme, not an ad cut-down, and not a single quick clip. It is a small finished film with a setup, a turn, and a frame the viewer remembers — split into micro scenes the audience can watch one at a time on a phone.",
       },
       {
         heading: "Built from micro scenes",
-        body: "The unit on micro.film is the micro scene: 45–90 seconds, vertical, locked to the cast. A film is a dozen or so micro scenes cut together. The exact count is a creator choice: a punchier film might use ten longer micro scenes, a denser one might use eighteen tighter ones.",
+        body: "The unit on micro.film is the micro scene: 45–90 seconds, vertical, locked to the cast. A film is a handful of micro scenes cut together. The exact count is a creator choice: a punchy three-minute essay might be three micro scenes, a full-length nine-minute thriller might be eight tightly-paced beats.",
       },
       {
         heading: "Made by the people making the films",

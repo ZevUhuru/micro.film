@@ -15,7 +15,7 @@ small and human-readable. Add to it as the product changes.
 
 Always use these terms consistently in code, copy, and product surfaces:
 
-- **Micro film** — the form. A ~15 minute vertical film, composed of micro scenes.
+- **Micro film** — the form. A vertical film capped at 10 minutes, composed of micro scenes.
 - **Micro scene** — the unit. 45–90 seconds, 9:16, locked to a character.
 - **Cut** — the assembled sequence of micro scenes that make the film.
 - **Project** — a single micro film a creator or team is building inside the studio.

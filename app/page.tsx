@@ -4,7 +4,7 @@ import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import {
   ASPECT_RATIO,
   CONTACT_HREF,
-  FILM_TOTAL_DURATION,
+  FILM_MAX_DURATION_LABEL,
   filmConcepts,
   platforms,
   SCENE_DURATION_RANGE,
@@ -49,7 +49,7 @@ function Hero() {
           <h1 className="mt-7 max-w-2xl text-balance text-5xl font-normal leading-[1.02] tracking-[-0.02em] text-[var(--foreground)] sm:text-6xl lg:text-7xl">
             <span className="serif italic">Make</span> a micro film.{" "}
             <span className="text-[var(--foreground)]/60">
-              A dozen micro scenes. Fifteen minutes. One story.
+              A handful of micro scenes. Up to ten minutes. One story.
             </span>
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-8 text-[var(--foreground)]/65">
@@ -79,7 +79,7 @@ function Hero() {
             </Link>
           </div>
           <dl className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-white/10 pt-8 text-sm">
-            <Stat term="Film" value={FILM_TOTAL_DURATION} />
+            <Stat term="Film" value={FILM_MAX_DURATION_LABEL} />
             <Stat term="Micro scene" value={SCENE_DURATION_RANGE} />
             <Stat term="Format" value={ASPECT_RATIO} />
           </dl>
@@ -118,7 +118,7 @@ function HeroFilmCard() {
             />
             <div className="relative flex w-full items-end justify-between text-xs text-[var(--foreground)]/85">
               <div className="font-mono uppercase tracking-[0.22em]">
-                Micro scene 01 / 12
+                Micro scene 01 / 08
               </div>
               <div className="font-mono uppercase tracking-[0.22em]">
                 01:18
@@ -172,8 +172,8 @@ function Concepts() {
     >
       <SectionHeader
         eyebrow="From the in-house studio"
-        title="Three films. A dozen micro scenes each."
-        copy="Each frame below was treated like a real shot: lens, light, blocking. Every film runs about fifteen minutes total — built end to end on the same platform you have access to."
+        title="Three films. A handful of micro scenes each."
+        copy="Each frame below was treated like a real shot: lens, light, blocking. Every film runs under ten minutes — built end to end on the same platform you have access to."
       />
 
       <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -211,7 +211,7 @@ function Concepts() {
             Showcase
           </p>
           <p className="serif mt-2 text-2xl leading-tight">
-            The Window Across the Way · Twelve micro scenes
+            The Window Across the Way · Eight micro scenes · 9 min 55 sec
           </p>
         </div>
         <Link

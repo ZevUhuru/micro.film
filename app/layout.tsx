@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s — micro.film",
   },
   description:
-    "A cinematic studio for vertical micro films, end to end. Research, develop, generate, and stitch 45–90 second micro scenes into a fifteen-minute film. Built for brands, agencies, publishers, and independent filmmakers.",
+    "A cinematic studio for vertical micro films, end to end. Research, develop, generate, and stitch 45–90 second micro scenes into a film of up to ten minutes. Built for brands, agencies, publishers, and independent filmmakers.",
   alternates: {
     canonical: "/",
   },

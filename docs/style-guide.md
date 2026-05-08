@@ -6,11 +6,11 @@ it without updating this file in the same change.
 
 ## 1. Brand essence
 
-micro.film is a cinematic studio for micro films — vertical, ~15 minutes,
-composed of micro scenes. The product is for **the people making the
-films**: brands, agencies, publishers, and independent filmmakers who
-want to research, develop, generate, and stitch a finished vertical
-micro film end to end.
+micro.film is a cinematic studio for micro films — vertical, **up to
+ten minutes**, composed of micro scenes. The product is for **the
+people making the films**: brands, agencies, publishers, and
+independent filmmakers who want to research, develop, generate, and
+stitch a finished vertical micro film end to end.
 
 We are not a consumer streaming app. The site should feel like a quiet,
 premium film tool — and a confident in-house studio whose own work
@@ -31,17 +31,19 @@ Always use these terms exactly:
 
 | Term         | Meaning                                                                |
 | ------------ | ---------------------------------------------------------------------- |
-| Micro film   | The form. A ~15-minute vertical film, composed of micro scenes.        |
+| Micro film   | The form. A vertical film of up to ten minutes, composed of micro scenes. |
 | Micro scene  | The unit. 45–90 seconds, 9:16, locked to a character.                  |
 | Cut          | The assembled sequence of micro scenes that make the film.             |
 | Project      | A single micro film a creator or team is building inside the studio.   |
 | Showcase     | The in-house library at `/watch` proving what the platform can do.    |
 | Roll camera  | Primary verb for kicking off a render.                                 |
 
-A standard micro film runs **about 15 minutes total**, composed of
-**micro scenes between 45 and 90 seconds each**. The exact count is a
-creator choice — a punchier film might have 10 longer micro scenes, a
-denser one might have 18 tighter ones.
+A micro film is **capped at 10 minutes** and is composed of **micro
+scenes between 45 and 90 seconds each**. Films can run much shorter — a
+single 90-second beat, a tight three-minute essay, a full-length
+nine-minute thriller all qualify. The exact count is a creator choice:
+a punchy three-minute film might be three micro scenes, a full-length
+nine-minute one might be eight tightly-paced beats.
 
 The vocabulary mirrors the brand. Everything we make is a *micro*
 something — a micro film, a micro scene. Do not weaken that by calling

@@ -5,7 +5,7 @@ import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import {
   ASPECT_RATIO,
   CONTACT_HREF,
-  FILM_TOTAL_DURATION,
+  FILM_MAX_DURATION_LABEL,
   IMAGE_MODEL_ID,
   platforms,
   SCENE_DURATION_RANGE,
@@ -17,7 +17,7 @@ import {
 export const metadata: Metadata = {
   title: "Studio",
   description:
-    "Research, develop, generate, and stitch a fifteen-minute vertical micro film end to end. The production studio for brands, agencies, publishers, and independent filmmakers.",
+    "Research, develop, generate, and stitch a vertical micro film of up to ten minutes, end to end. The production studio for brands, agencies, publishers, and independent filmmakers.",
   alternates: { canonical: "/studio" },
   openGraph: {
     title: "micro.film Studio",
@@ -117,8 +117,9 @@ export default function StudioPage() {
             </h1>
             <p className="mt-5 max-w-xl text-base leading-7 text-[var(--foreground)]/65">
               Fill the slate, lock the character, queue the render. Cut a
-              dozen 45–90 second micro scenes into a fifteen-minute vertical
-              film — for a campaign, a publisher channel, or your own reel.
+              handful of 45–90 second micro scenes into a vertical film of
+              up to ten minutes — for a campaign, a publisher channel, or
+              your own reel.
             </p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-sm">
@@ -132,7 +133,7 @@ export default function StudioPage() {
               </div>
               <div className="flex justify-between">
                 <dt>Film</dt>
-                <dd>{FILM_TOTAL_DURATION}</dd>
+                <dd>{FILM_MAX_DURATION_LABEL}</dd>
               </div>
               <div className="flex justify-between">
                 <dt>Micro scene</dt>

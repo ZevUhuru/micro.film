@@ -17,7 +17,7 @@ const DEFAULT_PLATFORMS = ["tiktok", "youtube_shorts", "instagram_reels"] as con
 const SCENE_DURATION_MIN = 45;
 const SCENE_DURATION_MAX = 90;
 const SCENE_DURATION_DEFAULT = 90;
-const FILM_TARGET_MINUTES = 15;
+const FILM_MAX_MINUTES = 10;
 
 export async function GET() {
   return Response.json({
@@ -34,7 +34,7 @@ export async function GET() {
         max: SCENE_DURATION_MAX,
         default: SCENE_DURATION_DEFAULT,
       },
-      filmTargetMinutes: FILM_TARGET_MINUTES,
+      filmMaxMinutes: FILM_MAX_MINUTES,
       aspectRatio: "9:16",
       platforms: DEFAULT_PLATFORMS,
     },

@@ -336,7 +336,7 @@ function SceneGrid({
         </nav>
       </header>
 
-      <ul className="mt-6 grid grid-cols-4 gap-2 sm:grid-cols-8">
+      <ul className="mt-6 grid grid-cols-4 gap-3">
         {scenes.map((scene) => {
           const isCurrent = scene.number === currentNumber;
           const status: "current" | "released" | "upcoming" = isCurrent

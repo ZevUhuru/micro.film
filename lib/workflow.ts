@@ -12,9 +12,9 @@ export const VIDEO_MODEL_ID = "seedance-2.0";
  *
  * micro.film is for the people making the films: brands, agencies,
  * publishers, and independent filmmakers. The studio at /studio is the
- * production tool; the showcase at /watch proves what the platform can
- * do. Public surfaces do not mention pricing — commercial conversations
- * happen via the Talk to us CTA.
+ * production tool; the films at /watch — produced by Micro Film Studios
+ * — prove what the platform can do. Public surfaces do not mention
+ * pricing; commercial conversations happen via the Talk to us CTA.
  *
  * We make films, not shows. Do not introduce "episode" or "series" as
  * product nouns. The unit is always called a "micro scene" in copy;
@@ -49,7 +49,7 @@ export const workflowSteps = [
     eyebrow: "02",
     title: "Develop",
     description:
-      "Write the screenplay — title, logline, characters, scenes — yourself with assistance or from a guided prompt. Cast a character with a locked reference sheet and lock the shot list.",
+      "Write the screenplay — title, logline, characters, scenes — yourself with assistance or from a guided prompt. Cast a character with a locked reference sheet, lock the shot list, and make the 9:16 cover with ChatGPT Images 2.0.",
   },
   {
     eyebrow: "03",
@@ -82,7 +82,7 @@ export const useCases = [
   {
     title: "Agencies",
     description:
-      "Add vertical filmmaking to what you offer your clients. Run the studio in-house or commission us to build the film with you.",
+      "Add vertical filmmaking to what you offer your clients. Run the studio yourselves, or commission Micro Film Studios to build the film with you.",
   },
   {
     title: "Publishers",
@@ -179,7 +179,7 @@ export const blogPosts = [
       },
       {
         heading: "Made by the people making the films",
-        body: "micro.film is for brands, agencies, publishers, and independent filmmakers. The studio is the production tool; the in-house showcase is the proof. You can run the whole pipeline yourself or commission us to build the film with you.",
+        body: "micro.film is for brands, agencies, publishers, and independent filmmakers. The studio is the production tool; the films from Micro Film Studios at /watch are the proof. You can run the whole pipeline yourself or commission us to build the film with you.",
       },
       {
         heading: "Cinematic by default",

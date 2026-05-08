@@ -17,10 +17,12 @@ Always use these terms consistently in code, copy, and product surfaces:
 
 - **Micro film** — the form. A vertical film capped at 10 minutes, composed of micro scenes.
 - **Screenplay** — the first deliverable of every micro film. Title, logline, characters, scenes with action and dialogue. Lives at `/studio/screenplay`. Always called a *screenplay*, never a "script."
+- **Cover** — the 9:16 vertical visual identity of a micro film. Generated and edited with ChatGPT Images 2.0. Lives at `/studio/cover`. Always called a *cover*, never a "poster" or "thumbnail" in product copy.
 - **Micro scene** — the unit. 45–90 seconds, 9:16, locked to a character.
 - **Cut** — the assembled sequence of micro scenes that make the film.
 - **Project** — a single micro film a creator or team is building inside the studio.
-- **Showcase** — the in-house library at `/watch` proving what the platform can do.
+- **Showcase** — the library at `/watch` of films produced by Micro Film Studios that prove what the platform can do.
+- **Micro Film Studios** — our in-house production house. Every film at `/watch` is credited "From Micro Film Studios." Always written in full; never shortened to "the in-house studio" (which would collide with `/studio`, the production workspace).
 
 We make **films**, not shows. Do not use "episode" or "series" as
 product nouns.

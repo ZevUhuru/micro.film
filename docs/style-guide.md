@@ -13,8 +13,8 @@ independent filmmakers who want to research, develop, generate, and
 stitch a finished vertical micro film end to end.
 
 We are not a consumer streaming app. The site should feel like a quiet,
-premium film tool — and a confident in-house studio whose own work
-proves the platform.
+premium film tool — and **Micro Film Studios**, the confident
+production house whose own films at `/watch` prove the platform.
 
 Three brand qualities to protect:
 
@@ -34,15 +34,23 @@ Always use these terms exactly:
 | Micro film   | The form. A vertical film of up to ten minutes, composed of micro scenes. |
 | Micro scene  | The unit. 45–90 seconds, 9:16, locked to a character.                  |
 | Screenplay   | The first deliverable — title, logline, characters, scenes with action and dialogue. Every micro film starts here. |
+| Cover        | The 9:16 vertical visual identity of a micro film — the poster in the showcase grid, the OG image when shared. Generated and edited with ChatGPT Images 2.0. |
 | Cut          | The assembled sequence of micro scenes that make the film.             |
 | Project      | A single micro film a creator or team is building inside the studio.   |
-| Showcase     | The in-house library at `/watch` proving what the platform can do.    |
+| Showcase     | The library at `/watch` — films produced by Micro Film Studios that prove what the platform can do. |
+| Micro Film Studios | Our in-house production house. The films at `/watch` are credited "From Micro Film Studios." Never abbreviated to "the in-house studio" or "the studio" (the studio means the `/studio` workspace). |
 | Roll camera  | Primary verb for kicking off a render.                                 |
 
 The screenplay is the noun. We do **not** call it a "script." Verbs
 for working on it are concrete craft actions — *Write, Rewrite,
 Tighten, Extend, Suggest a turn* — never generic AI verbs like
 "magic" or "improve."
+
+The cover is the noun for the 9:16 visual that fronts every micro
+film. We do **not** call it a "poster," "thumbnail," or "key art" in
+product copy. The verb is *Make the cover.* When we name the model
+in copy ("Edited with ChatGPT Images 2.0"), use that exact spelling —
+not "GPT Image 2," not "DALL·E," not "OpenAI's image model."
 
 A micro film is **capped at 10 minutes** and is composed of **micro
 scenes between 45 and 90 seconds each**. Films can run much shorter — a

@@ -1,6 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FilmStrip, FilmStripBadge } from "@/components/FilmStrip";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
+import { getFilm } from "@/lib/films";
 import {
   ASPECT_RATIO,
   CONTACT_HREF,
@@ -12,6 +14,8 @@ import {
   useCases,
   workflowSteps,
 } from "@/lib/workflow";
+
+const featuredFilm = getFilm("the-window-across-the-way");
 
 export default function Home() {
   return (
@@ -69,7 +73,7 @@ function Hero() {
               href="/watch/the-window-across-the-way"
               className="rounded-full border border-white/15 px-6 py-3.5 text-sm font-medium text-[var(--foreground)] transition hover:bg-white/5"
             >
-              See the showcase →
+              Watch The Window Across the Way →
             </Link>
             <Link
               href={CONTACT_HREF}
@@ -103,6 +107,11 @@ function Stat({ term, value }: { term: string; value: string }) {
 }
 
 function HeroFilmCard() {
+  const film = featuredFilm;
+  const cover = film?.cover;
+  const sceneCount = film?.scenes.length ?? 0;
+  const firstScene = film?.scenes[0];
+
   return (
     <div className="relative">
       <div
@@ -110,31 +119,58 @@ function HeroFilmCard() {
         className="absolute -inset-10 rounded-[3rem] bg-[radial-gradient(circle_at_30%_30%,rgba(232,184,106,0.18),transparent_60%)] blur-2xl"
       />
       <FilmStrip className="relative rounded-[2rem]">
-        <div className="overflow-hidden rounded-2xl bg-gradient-to-b from-[#3b2a1d] via-[#1c130e] to-[#0c0a08] p-1">
-          <article className="relative grid aspect-[9/16] w-full place-items-end overflow-hidden rounded-xl border border-white/10 bg-[radial-gradient(circle_at_70%_25%,rgba(241,207,148,0.4),transparent_55%)] p-5">
+        <Link
+          href={film ? `/watch/${film.slug}` : "/watch/the-window-across-the-way"}
+          className="block overflow-hidden rounded-2xl bg-gradient-to-b from-[#3b2a1d] via-[#1c130e] to-[#0c0a08] p-1 transition hover:opacity-95"
+          aria-label={film ? `Watch ${film.title}` : "Watch The Window Across the Way"}
+        >
+          <article className="relative aspect-[9/16] w-full overflow-hidden rounded-xl border border-white/10 bg-black">
+            {cover ? (
+              <Image
+                src={cover.src}
+                alt={cover.alt}
+                fill
+                sizes="(min-width: 1024px) 480px, (min-width: 640px) 60vw, 92vw"
+                className="object-cover"
+                priority
+              />
+            ) : (
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-[radial-gradient(circle_at_70%_25%,rgba(241,207,148,0.4),transparent_55%)]"
+              />
+            )}
             <div
               aria-hidden="true"
-              className="absolute inset-0 bg-[linear-gradient(180deg,transparent_30%,rgba(0,0,0,0.78)_92%)]"
+              className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(0,0,0,0.55)_82%,rgba(0,0,0,0.85)_100%)]"
             />
-            <div className="relative flex w-full items-end justify-between text-xs text-[var(--foreground)]/85">
-              <div className="font-mono uppercase tracking-[0.22em]">
-                Micro scene 01 / 08
+            <div className="relative grid h-full w-full place-items-end p-5">
+              <div className="relative flex w-full items-end justify-between text-xs text-[var(--foreground)]/85">
+                <div className="font-mono uppercase tracking-[0.22em]">
+                  Micro scene 01 / {String(sceneCount).padStart(2, "0")}
+                </div>
+                <div className="font-mono uppercase tracking-[0.22em]">
+                  {firstScene?.duration ?? "1m 18s"}
+                </div>
               </div>
-              <div className="font-mono uppercase tracking-[0.22em]">
-                01:18
-              </div>
-            </div>
-            <div className="relative w-full">
-              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--amber-soft)]">
-                Last Light on Sunset
-              </p>
-              <h2 className="serif mt-2 text-3xl leading-tight text-[var(--foreground)] sm:text-4xl">
-                She closes the case as the streetlights flicker on.
-              </h2>
             </div>
           </article>
-        </div>
+        </Link>
       </FilmStrip>
+
+      <div className="mt-4 flex items-center justify-between gap-4 text-xs">
+        <div className="min-w-0">
+          <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--amber-soft)]">
+            {film?.studio ?? "From Micro Film Studios"}
+          </p>
+          <p className="serif mt-1 truncate text-lg leading-tight text-[var(--foreground)]">
+            {film?.title ?? "The Window Across the Way"}
+          </p>
+        </div>
+        <span className="shrink-0 font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/55">
+          {film?.totalDuration ?? "9 min 55 sec"} · {sceneCount || 8} micro scenes
+        </span>
+      </div>
 
       <div className="mt-4 grid grid-cols-3 gap-3 text-center font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/55">
         {platforms.map((platform) => (
@@ -171,7 +207,7 @@ function Concepts() {
       className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28"
     >
       <SectionHeader
-        eyebrow="From the in-house studio"
+        eyebrow="From Micro Film Studios"
         title="Three films. A handful of micro scenes each."
         copy="Each frame below was treated like a real shot: lens, light, blocking. Every film runs under ten minutes — built end to end on the same platform you have access to."
       />
@@ -208,7 +244,7 @@ function Concepts() {
       <div className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[var(--amber)]/25 bg-[var(--amber)]/[0.06] p-5">
         <div>
           <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--amber-soft)]">
-            Showcase
+            Now playing
           </p>
           <p className="serif mt-2 text-2xl leading-tight">
             The Window Across the Way · Eight micro scenes · 9 min 55 sec
@@ -218,7 +254,7 @@ function Concepts() {
           href="/watch/the-window-across-the-way"
           className="rounded-full bg-[var(--paper)] px-5 py-3 text-sm font-medium text-[var(--ink)] transition hover:bg-[var(--amber-soft)]"
         >
-          See the showcase →
+          Watch the film →
         </Link>
       </div>
     </section>

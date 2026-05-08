@@ -128,6 +128,12 @@ export default function StudioPage() {
               >
                 Open the screenplay editor →
               </Link>
+              <Link
+                href="/studio/cover"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-[var(--foreground)] transition hover:bg-white/5"
+              >
+                Make the cover →
+              </Link>
               <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/45">
                 Step 02 — Develop
               </span>

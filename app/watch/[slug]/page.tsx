@@ -23,6 +23,17 @@ export async function generateMetadata({
     return { title: "Film not found" };
   }
 
+  const ogImage = film.cover
+    ? [
+        {
+          url: film.cover.src,
+          width: film.cover.width,
+          height: film.cover.height,
+          alt: film.cover.alt,
+        },
+      ]
+    : undefined;
+
   return {
     title: film.title,
     description: film.tagline + " " + film.plot,
@@ -33,6 +44,7 @@ export async function generateMetadata({
       url: `https://micro.film/watch/${film.slug}`,
       siteName: "micro.film",
       type: "video.movie",
+      images: ogImage,
     },
   };
 }

@@ -1,12 +1,12 @@
 /**
  * Sample film data shown on /watch/[slug].
  *
- * /watch is the in-house showcase — the library that proves what the
- * platform can do. There is no paywall. The micro scene tile grid still
- * carries the binge / progressive-release UX (current / released /
- * upcoming), but the gate is the **release schedule**, not money. The
- * `released` boolean controls which tiles are watchable today and which
- * read as "Soon."
+ * /watch is the Micro Film Studios library — the films we made to prove
+ * what the platform can do. There is no paywall. The micro scene tile
+ * grid still carries the binge / progressive-release UX (current /
+ * released / upcoming), but the gate is the **release schedule**, not
+ * money. The `released` boolean controls which tiles are watchable
+ * today and which read as "Soon."
  *
  * A micro film is a vertical film capped at 10 minutes, composed of
  * 45–90 second micro scenes. We make films, not shows. Avoid "episode"
@@ -56,6 +56,18 @@ export type Film = {
   stats: {
     likes: string;
     saves: string;
+  };
+  /**
+   * 9:16 cover art — the visual identity of the film. Used as the
+   * hero image on the landing, the poster in the showcase grid, the
+   * OG image when shared. Path is relative to /public.
+   */
+  cover?: {
+    src: string;
+    width: number;
+    height: number;
+    /** Short alt text describing the cover. */
+    alt: string;
   };
   /** Optional standalone trailer cut that lives at the head of the grid. */
   trailer?: FilmTrailer;
@@ -144,10 +156,16 @@ const films: Film[] = [
     posterTone:
       "from-[#3a2316] via-[#1a110b] to-[#06050a]",
     totalDuration: "9 min 55 sec",
-    studio: "From the in-house studio",
+    studio: "From Micro Film Studios",
     stats: {
       likes: "12.8k",
       saves: "146.2k",
+    },
+    cover: {
+      src: "/covers/the-window-across-the-way.png",
+      width: 576,
+      height: 1024,
+      alt: "The Window Across the Way — Micro Film Studios cover. A woman framed in a rain-streaked apartment window above a wet city street at night, with a silhouetted figure on the sidewalk below.",
     },
     trailer: {
       duration: "0m 38s",

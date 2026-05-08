@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { FilmStrip, FilmStripBadge } from "@/components/FilmStrip";
@@ -118,10 +119,21 @@ function PlayerColumn({ film, tile }: { film: Film; tile: Tile }) {
             }
             className={`relative grid aspect-[9/16] w-full place-items-end overflow-hidden rounded-xl bg-gradient-to-b ${film.posterTone}`}
           >
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-[radial-gradient(circle_at_72%_22%,rgba(241,207,148,0.32),transparent_50%),radial-gradient(circle_at_18%_82%,rgba(177,58,58,0.18),transparent_55%)]"
-            />
+            {film.cover ? (
+              <Image
+                src={film.cover.src}
+                alt={film.cover.alt}
+                fill
+                sizes="(min-width: 1024px) 480px, (min-width: 640px) 60vw, 92vw"
+                className="object-cover"
+                priority
+              />
+            ) : (
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-[radial-gradient(circle_at_72%_22%,rgba(241,207,148,0.32),transparent_50%),radial-gradient(circle_at_18%_82%,rgba(177,58,58,0.18),transparent_55%)]"
+              />
+            )}
             <div
               aria-hidden="true"
               className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0.0)_38%,rgba(0,0,0,0.55)_72%,rgba(0,0,0,0.92)_100%)]"

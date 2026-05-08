@@ -109,8 +109,8 @@ function Stat({ term, value }: { term: string; value: string }) {
 function HeroFilmCard() {
   const film = featuredFilm;
   const cover = film?.cover;
-  const sceneCount = film?.scenes.length ?? 0;
-  const firstScene = film?.scenes[0];
+  const href = film ? `/watch/${film.slug}` : "/watch/the-window-across-the-way";
+  const title = film?.title ?? "The Window Across the Way";
 
   return (
     <div className="relative">
@@ -120,9 +120,9 @@ function HeroFilmCard() {
       />
       <FilmStrip className="relative rounded-[2rem]">
         <Link
-          href={film ? `/watch/${film.slug}` : "/watch/the-window-across-the-way"}
+          href={href}
+          aria-label={`Watch ${title}`}
           className="block overflow-hidden rounded-2xl bg-gradient-to-b from-[#3b2a1d] via-[#1c130e] to-[#0c0a08] p-1 transition hover:opacity-95"
-          aria-label={film ? `Watch ${film.title}` : "Watch The Window Across the Way"}
         >
           <article className="relative aspect-[9/16] w-full overflow-hidden rounded-xl border border-white/10 bg-black">
             {cover ? (
@@ -140,37 +140,9 @@ function HeroFilmCard() {
                 className="absolute inset-0 bg-[radial-gradient(circle_at_70%_25%,rgba(241,207,148,0.4),transparent_55%)]"
               />
             )}
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(0,0,0,0.55)_82%,rgba(0,0,0,0.85)_100%)]"
-            />
-            <div className="relative grid h-full w-full place-items-end p-5">
-              <div className="relative flex w-full items-end justify-between text-xs text-[var(--foreground)]/85">
-                <div className="font-mono uppercase tracking-[0.22em]">
-                  Micro scene 01 / {String(sceneCount).padStart(2, "0")}
-                </div>
-                <div className="font-mono uppercase tracking-[0.22em]">
-                  {firstScene?.duration ?? "1m 18s"}
-                </div>
-              </div>
-            </div>
           </article>
         </Link>
       </FilmStrip>
-
-      <div className="mt-4 flex items-center justify-between gap-4 text-xs">
-        <div className="min-w-0">
-          <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--amber-soft)]">
-            {film?.studio ?? "From Micro Film Studios"}
-          </p>
-          <p className="serif mt-1 truncate text-lg leading-tight text-[var(--foreground)]">
-            {film?.title ?? "The Window Across the Way"}
-          </p>
-        </div>
-        <span className="shrink-0 font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/55">
-          {film?.totalDuration ?? "9 min 55 sec"} · {sceneCount || 8} micro scenes
-        </span>
-      </div>
 
       <div className="mt-4 grid grid-cols-3 gap-3 text-center font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/55">
         {platforms.map((platform) => (

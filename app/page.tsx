@@ -64,10 +64,10 @@ function Hero() {
               Start a film
             </Link>
             <Link
-              href="#concepts"
+              href="/watch/the-window-across-the-way"
               className="rounded-full border border-white/15 px-6 py-3.5 text-sm font-medium text-[var(--foreground)] transition hover:bg-white/5"
             >
-              See sample films
+              Watch a sample film →
             </Link>
           </div>
           <dl className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-white/10 pt-8 text-sm">
@@ -195,6 +195,23 @@ function Concepts() {
             </div>
           </article>
         ))}
+      </div>
+
+      <div className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[var(--amber)]/25 bg-[var(--amber)]/[0.06] p-5">
+        <div>
+          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--amber-soft)]">
+            Now watching
+          </p>
+          <p className="serif mt-2 text-2xl leading-tight">
+            The Window Across the Way · Episode 1
+          </p>
+        </div>
+        <Link
+          href="/watch/the-window-across-the-way"
+          className="rounded-full bg-[var(--paper)] px-5 py-3 text-sm font-medium text-[var(--ink)] transition hover:bg-[var(--amber-soft)]"
+        >
+          Watch the sample film →
+        </Link>
       </div>
     </section>
   );

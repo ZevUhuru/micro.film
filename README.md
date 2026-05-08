@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# micro.film
+
+AI-native micro-drama studio for phone-native serialized stories.
+
+The first MVP wedge is a production workflow for creators building serialized
+vertical dramas for Black American women: generate character reference sheets
+with ChatGPT Images 2.0, turn story beats into Seedance-ready prompts, then
+queue a 15-second consistent-character clip.
 
 ## Getting Started
 
-First, run the development server:
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Routes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/` — landing page and product positioning.
+- `/studio` — prototype creator interface.
+- `/api/runs` — starter run contract for clip creation.
 
-## Learn More
+## MVP Pipeline
 
-To learn more about Next.js, take a look at the following resources:
+1. Capture the series premise, audience, character archetypes, and first scene.
+2. Generate a character reference sheet using `gpt-image-2`.
+3. Build a 15-second Seedance prompt from the story template.
+4. Queue video generation with `seedance-2.0`.
+5. Review the clip and export to TikTok, YouTube Shorts, or Instagram Reels.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Provider calls are not wired yet. The app defines the product surface and API
+shape so the production pipeline can be connected once available.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Commands
 
-## Deploy on Vercel
+```bash
+npm run dev
+npm run lint
+npm run build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Keep provider orchestration outside the public UI layer.
+- Do not use floating model aliases like `latest`.
+- Treat the audience wedge with specificity and respect; build templates around
+  story functions, not stereotypes.

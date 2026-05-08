@@ -55,7 +55,7 @@ export function SiteFooter() {
           </span>
           <span aria-hidden="true">·</span>
           <span className="font-mono text-[11px] uppercase tracking-[0.2em]">
-            Made for short cinema
+            Made for micro cinema
           </span>
         </div>
         <div className="flex items-center gap-5">

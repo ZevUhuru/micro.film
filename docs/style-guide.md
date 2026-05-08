@@ -6,8 +6,9 @@ it without updating this file in the same change.
 
 ## 1. Brand essence
 
-micro.film is a cinematic studio for short, vertical films. The product
-should feel like a quiet, premium film tool — not a loud entertainment app.
+micro.film is a cinematic studio for micro films — vertical, ~15 minutes,
+composed of micro scenes. The product should feel like a quiet, premium
+film tool — not a loud entertainment app.
 
 Three brand qualities to protect:
 
@@ -22,16 +23,35 @@ Three brand qualities to protect:
 
 Always use these terms exactly:
 
-| Term         | Meaning                                                      |
-| ------------ | ------------------------------------------------------------ |
-| Micro film   | The form. Vertical, ≤ 3 minutes, fully composed.             |
-| Scene        | The render unit. 15 seconds, 9:16, locked to a character.    |
-| Cut          | The assembled sequence of scenes that make the film.         |
-| Series       | An ordered run of micro films around the same characters.    |
-| Episode      | One micro film inside a series.                              |
-| Roll camera  | Primary verb for kicking off a render.                       |
+| Term         | Meaning                                                                |
+| ------------ | ---------------------------------------------------------------------- |
+| Micro film   | The form. A ~15-minute vertical film, composed of micro scenes.        |
+| Micro scene  | The unit. 45–90 seconds, 9:16, locked to a character.                  |
+| Cut          | The assembled sequence of micro scenes that make the film.             |
+| Pass         | Single-film unlock. $2.49 unlocks every micro scene in one film.       |
+| All-access   | Subscription. $9.99/mo unlocks every micro scene of every film.        |
+| Roll camera  | Primary verb for kicking off a render.                                 |
 
-Do not use: "video clip", "AI video", "drama clip", "short-form ad".
+A standard micro film runs **about 15 minutes total**, composed of
+**micro scenes between 45 and 90 seconds each**. The exact count is a
+creator choice — a punchier film might have 10 longer micro scenes, a
+denser one might have 18 tighter ones. The **first 3 micro scenes are
+free**. The rest unlock with a Pass or All-access.
+
+The vocabulary mirrors the brand. Everything we make is a *micro*
+something — a micro film, a micro scene. Do not weaken that by calling
+the work "short" — that's an undirected adjective. Reach for "micro"
+first; if the meaning genuinely is "brief in duration," prefer
+"compact," "tight," or a specific number.
+
+We make **films**, not shows. Avoid the words "episode" and "series" as
+product nouns — they imply ongoing television. A micro film is a
+single, finished thing.
+
+Do not use: "video clip", "AI video", "drama clip", "short-form ad",
+"short film", "episode", "series", "scene" on its own as the product
+noun (always **micro scene** in copy; bare "scene" is acceptable only as
+a casual short-form when the context already established it).
 
 ## 3. Color palette
 
@@ -122,7 +142,7 @@ When you build a new pattern that appears more than once, extract it into
 
 ## 8. Voice and tone
 
-- Speak in **short, declarative sentences**.
+- Speak in **tight, declarative sentences**.
 - Cinematic vocabulary: cast, write, render, cut, frame, scene.
 - Avoid hype words: "powerful", "revolutionary", "AI-powered". The work
   speaks.

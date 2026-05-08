@@ -3,10 +3,12 @@ import { FilmStrip, FilmStripBadge } from "@/components/FilmStrip";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import {
   ASPECT_RATIO,
-  FILM_MAX_DURATION,
+  FILM_TOTAL_DURATION,
+  FREE_SCENES,
   filmConcepts,
+  PASS_PRICE,
   platforms,
-  SCENE_DURATION,
+  SCENE_DURATION_RANGE,
   testimonials,
   useCases,
   workflowSteps,
@@ -48,13 +50,13 @@ function Hero() {
           <h1 className="mt-7 max-w-2xl text-balance text-5xl font-normal leading-[1.02] tracking-[-0.02em] text-[var(--foreground)] sm:text-6xl lg:text-7xl">
             <span className="serif italic">Make</span> a micro film.{" "}
             <span className="text-[var(--foreground)]/60">
-              Share it everywhere a phone fits.
+              A dozen micro scenes. Fifteen minutes. One story.
             </span>
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-8 text-[var(--foreground)]/65">
-            Cast a character, write your scenes, cut a vertical micro film up
-            to three minutes long. Post it to TikTok, YouTube Shorts, and
-            Instagram Reels in one move.
+            Cast a character, write 45–90 second micro scenes, cut a fifteen
+            minute vertical film. The first three micro scenes are free. The
+            rest of the film unlocks with a {PASS_PRICE} Pass.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Link
@@ -71,8 +73,8 @@ function Hero() {
             </Link>
           </div>
           <dl className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-white/10 pt-8 text-sm">
-            <Stat term="Film" value={FILM_MAX_DURATION} />
-            <Stat term="Scene" value={SCENE_DURATION} />
+            <Stat term="Film" value={FILM_TOTAL_DURATION} />
+            <Stat term="Micro scene" value={SCENE_DURATION_RANGE} />
             <Stat term="Format" value={ASPECT_RATIO} />
           </dl>
         </div>
@@ -110,10 +112,10 @@ function HeroFilmCard() {
             />
             <div className="relative flex w-full items-end justify-between text-xs text-[var(--foreground)]/85">
               <div className="font-mono uppercase tracking-[0.22em]">
-                Scene 01 / 07
+                Micro scene 01 / 12
               </div>
               <div className="font-mono uppercase tracking-[0.22em]">
-                00:15
+                01:18
               </div>
             </div>
             <div className="relative w-full">
@@ -164,8 +166,8 @@ function Concepts() {
     >
       <SectionHeader
         eyebrow="Sample reel"
-        title="Three films, written in an afternoon."
-        copy="Each frame below was treated like a real shot: lens, light, blocking. The product helps you make those choices fast."
+        title="Three films. A dozen micro scenes each."
+        copy="Each frame below was treated like a real shot: lens, light, blocking. Every film runs about fifteen minutes total — the first three micro scenes free."
       />
 
       <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -178,7 +180,7 @@ function Concepts() {
               <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/65">
                 <span>Film {String(index + 1).padStart(2, "0")}</span>
                 <span>
-                  {film.runtime} · {film.scenes} scenes
+                  {film.runtime} · {film.scenes} micro scenes
                 </span>
               </div>
               <div>
@@ -203,7 +205,7 @@ function Concepts() {
             Now watching
           </p>
           <p className="serif mt-2 text-2xl leading-tight">
-            The Window Across the Way · Episode 1
+            The Window Across the Way · Micro scenes 1–{FREE_SCENES} free
           </p>
         </div>
         <Link
@@ -222,8 +224,8 @@ function Pipeline() {
     <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
       <SectionHeader
         eyebrow="The pipeline"
-        title="Cast. Write. Render."
-        copy="A single, opinionated workflow. The product gets out of the way so the film can come together."
+        title="Cast. Write. Cut."
+        copy="One opinionated workflow from a blank slate to a finished film. The product gets out of the way so the film can come together."
       />
 
       <ol className="mt-12 grid gap-4 md:grid-cols-3">
@@ -254,12 +256,12 @@ function ShareToPlatforms() {
           <div>
             <FilmStripBadge label="Distribution" />
             <h2 className="serif mt-5 max-w-md text-4xl leading-tight">
-              One cut. Three timelines.
+              Three free micro scenes. Three timelines.
             </h2>
             <p className="mt-5 max-w-md text-sm leading-7 text-[var(--foreground)]/65">
-              Vertical 9:16 by default. Your finished micro film is ready for
+              Vertical 9:16 by default. Your free trailer micro scenes ship to
               TikTok, YouTube Shorts, and Instagram Reels with platform-aware
-              captions and safe areas.
+              captions. The complete fifteen-minute film lives on micro.film.
             </p>
           </div>
 
@@ -292,7 +294,7 @@ function UseCases() {
     <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
       <SectionHeader
         eyebrow="Who it is for"
-        title="A studio for short, cinematic moments."
+        title="A studio for cinematic micro films."
         copy="micro.film fits whoever wants a real frame instead of a placeholder."
       />
 
@@ -350,11 +352,11 @@ function CTA() {
       <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[radial-gradient(circle_at_18%_30%,rgba(232,184,106,0.22),transparent_55%),linear-gradient(180deg,#1a1612,#0c0a08)] p-10 sm:p-14">
         <FilmStripBadge label="Roll camera" />
         <h2 className="serif mt-6 max-w-2xl text-balance text-5xl leading-tight sm:text-6xl">
-          Open the studio and ship your first film tonight.
+          Open the studio and ship your first micro scene tonight.
         </h2>
         <p className="mt-6 max-w-xl text-base leading-7 text-[var(--foreground)]/65">
-          Cast, write, render, share. The whole loop is built for one
-          afternoon, not one quarter.
+          Cast, write, render, cut. Three free micro scenes go on social as
+          a trailer. The full fifteen-minute film unlocks with a Pass.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link

@@ -4,10 +4,11 @@ import { FilmStrip, FilmStripBadge } from "@/components/FilmStrip";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import {
   ASPECT_RATIO,
-  FILM_MAX_DURATION,
+  FILM_TOTAL_DURATION,
   IMAGE_MODEL_ID,
+  PASS_PRICE,
   platforms,
-  SCENE_DURATION,
+  SCENE_DURATION_RANGE,
   studioDefaults,
   VIDEO_MODEL_ID,
   workflowSteps,
@@ -16,7 +17,7 @@ import {
 export const metadata: Metadata = {
   title: "Studio",
   description:
-    "Cast a character, write 15-second scenes, and cut a vertical micro film up to three minutes for TikTok, YouTube Shorts, and Instagram Reels.",
+    "Cast a character, write 45–90 second micro scenes, and cut a fifteen-minute vertical micro film. First three micro scenes free, rest unlocked with a Pass.",
   alternates: { canonical: "/studio" },
   openGraph: {
     title: "micro.film Studio",
@@ -59,8 +60,8 @@ const fields: Array<{
     rows: 2,
   },
   {
-    label: "Scene 01 (15s)",
-    hint: "One location, one turn, one frame to remember. Add more scenes after this one.",
+    label: "Micro scene 01 (45–90s)",
+    hint: "One location, one turn, one frame to remember. Add more micro scenes after this one.",
     value: studioDefaults.sceneBeat,
     rows: 4,
   },
@@ -75,8 +76,8 @@ const fields: Array<{
 const referenceChecks = [
   "Front, three-quarter, and profile reference",
   "Wardrobe, palette, and key props locked",
-  "Three expressions tuned to the scene",
-  "Continuity notes saved for the next clip",
+  "Three expressions tuned to the micro scene",
+  "Continuity notes saved for the next micro scene",
 ];
 
 const renderQueue: Array<{
@@ -90,7 +91,7 @@ const renderQueue: Array<{
     status: "Ready",
   },
   {
-    label: "Scene prompt",
+    label: "Micro scene prompt",
     detail: "scene-template-v0",
     status: "Drafting",
   },
@@ -115,9 +116,10 @@ export default function StudioPage() {
               <span className="italic">Roll</span> a film in three steps.
             </h1>
             <p className="mt-5 max-w-xl text-base leading-7 text-[var(--foreground)]/65">
-              Fill the slate, lock the character, and queue the render. The
-              output is a vertical clip ready for TikTok, YouTube Shorts, and
-              Instagram Reels.
+              Fill the slate, lock the character, queue the render. Cut a
+              dozen 45–90 second micro scenes into a fifteen-minute vertical
+              film. The first three micro scenes go free; the rest unlocks
+              with a {PASS_PRICE} Pass.
             </p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-sm">
@@ -131,11 +133,11 @@ export default function StudioPage() {
               </div>
               <div className="flex justify-between">
                 <dt>Film</dt>
-                <dd>{FILM_MAX_DURATION}</dd>
+                <dd>{FILM_TOTAL_DURATION}</dd>
               </div>
               <div className="flex justify-between">
-                <dt>Scene</dt>
-                <dd>{SCENE_DURATION}</dd>
+                <dt>Micro scene</dt>
+                <dd>{SCENE_DURATION_RANGE}</dd>
               </div>
             </dl>
           </div>
@@ -147,7 +149,7 @@ export default function StudioPage() {
           <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 sm:p-8">
             <div className="flex items-center justify-between border-b border-white/10 pb-5">
               <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/55">
-                Scene 01 — slate
+                Micro scene 01 — slate
               </p>
               <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--amber-soft)]">
                 Take 01
@@ -200,7 +202,7 @@ export default function StudioPage() {
             <div className="rounded-3xl border border-[var(--amber)]/30 bg-[radial-gradient(circle_at_30%_20%,rgba(232,184,106,0.18),transparent_60%),linear-gradient(180deg,#1a1612,#0c0a08)] p-6">
               <FilmStripBadge label="Action" />
               <h2 className="serif mt-4 text-2xl leading-tight">
-                Render this scene
+                Render this micro scene
               </h2>
               <p className="mt-3 text-sm leading-6 text-[var(--foreground)]/65">
                 Locks the cast, builds the prompt, and queues a vertical render.
@@ -288,7 +290,7 @@ export default function StudioPage() {
                   Help
                 </p>
                 <h2 className="serif mt-3 text-2xl leading-tight">
-                  Read the notes before you write the next scene.
+                  Read the notes before you write the next micro scene.
                 </h2>
               </div>
               <Link

@@ -126,7 +126,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   Apply this in the studio.
                 </h2>
                 <p className="mt-3 text-sm leading-6 text-[var(--foreground)]/65">
-                  Cast a character, write a scene, render a vertical clip.
+                  Cast a character, write a micro scene, render a vertical cut.
                 </p>
                 <Link
                   href="/studio"

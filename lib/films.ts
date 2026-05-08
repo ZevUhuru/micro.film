@@ -1,21 +1,26 @@
 /**
- * Sample series data shown on /watch/[slug].
+ * Sample film data shown on /watch/[slug].
  *
- * A series is an ordered run of micro film episodes. Each episode is its
- * own micro film (≤ 3 minutes), composed of multiple 15-second scenes.
+ * A micro film is a ~15 minute vertical film, composed of 45–90 second
+ * micro scenes. Micro scenes 1–3 are free; the rest unlock with a Pass
+ * ($2.49) or an All-access subscription ($9.99/mo). The grid renders a
+ * padlock on locked micro scenes (modeling the ReelShort progressive-
+ * unlock pattern, applied to micro scenes within one film rather than
+ * episodes within a series).
  *
- * Free episodes are watchable; locked episodes display a padlock in the
- * episode grid (modeling the ReelShort progressive-unlock pattern).
+ * We make films, not shows. Avoid "episode" / "series" wording in
+ * anything user-facing. The unit is a "micro scene"; bare "scene" is
+ * acceptable only as a casual short-form once context is established.
  */
 
-export type FilmEpisode = {
+export type FilmScene = {
   number: number;
   title: string;
   duration: string;
   free: boolean;
 };
 
-export type FilmSeries = {
+export type Film = {
   slug: string;
   title: string;
   tagline: string;
@@ -23,59 +28,43 @@ export type FilmSeries = {
   genre: string;
   tags: ReadonlyArray<string>;
   audience: string;
-  /** Scene caption shown in the player frame for episode 1. */
+  /** Caption shown in the player frame for micro scene 1. */
   openingCaption: string;
   /** Color tone for the player gradient. Tailwind arbitrary value gradient. */
   posterTone: string;
+  /** Total runtime label shown in the watch UI, e.g. "~15 min". */
+  totalDuration: string;
+  /** Single-film unlock price, shown on the paywall. */
+  passPrice: string;
   stats: {
     likes: string;
     saves: string;
   };
-  episodes: ReadonlyArray<FilmEpisode>;
+  scenes: ReadonlyArray<FilmScene>;
 };
 
-const windowEpisodes: FilmEpisode[] = [
-  { number: 1, title: "The Third Window", duration: "2m 12s", free: true },
-  { number: 2, title: "Same Coat, Different Day", duration: "2m 28s", free: true },
-  { number: 3, title: "He Knows the Bus", duration: "2m 41s", free: true },
-  { number: 4, title: "A Spare Key Missing", duration: "2m 18s", free: false },
-  { number: 5, title: "The Pharmacist Notices", duration: "2m 55s", free: false },
-  { number: 6, title: "Two Empty Coffees", duration: "2m 04s", free: false },
-  { number: 7, title: "She Changes Routines", duration: "2m 36s", free: false },
-  { number: 8, title: "The Patterns Change Too", duration: "2m 49s", free: false },
-  { number: 9, title: "A Detective Returns Her Call", duration: "2m 11s", free: false },
-  { number: 10, title: "He Was at the Diner", duration: "2m 28s", free: false },
-  { number: 11, title: "The Building Across", duration: "2m 14s", free: false },
-  { number: 12, title: "Empty Mailbox", duration: "2m 33s", free: false },
-  { number: 13, title: "The Doorman Lies", duration: "2m 22s", free: false },
-  { number: 14, title: "She Sees His Apartment", duration: "2m 47s", free: false },
-  { number: 15, title: "What He Has on the Wall", duration: "2m 58s", free: false },
-  { number: 16, title: "She Is Not the First", duration: "2m 19s", free: false },
-  { number: 17, title: "The Other Woman's Name", duration: "2m 06s", free: false },
-  { number: 18, title: "A Locksmith at Three AM", duration: "2m 41s", free: false },
-  { number: 19, title: "He Knows She Knows", duration: "2m 27s", free: false },
-  { number: 20, title: "The Stairwell", duration: "2m 35s", free: false },
-  { number: 21, title: "An Old Friend Calls", duration: "2m 12s", free: false },
-  { number: 22, title: "Her Mother Sees Him", duration: "2m 48s", free: false },
-  { number: 23, title: "The Garage", duration: "2m 09s", free: false },
-  { number: 24, title: "What He Drives", duration: "2m 31s", free: false },
-  { number: 25, title: "She Disappears for a Day", duration: "2m 17s", free: false },
-  { number: 26, title: "He Cannot Find Her", duration: "2m 44s", free: false },
-  { number: 27, title: "The Detective's Theory", duration: "2m 26s", free: false },
-  { number: 28, title: "She Walks Right Up", duration: "2m 53s", free: false },
-  { number: 29, title: "The Window Goes Dark", duration: "2m 38s", free: false },
-  { number: 30, title: "Tape on the Floor", duration: "2m 21s", free: false },
-  { number: 31, title: "The Last Thing He Says", duration: "2m 16s", free: false },
-  { number: 32, title: "What She Keeps", duration: "2m 44s", free: false },
+const windowScenes: FilmScene[] = [
+  { number: 1, title: "The Third Window", duration: "1m 18s", free: true },
+  { number: 2, title: "Same Coat, Different Day", duration: "1m 06s", free: true },
+  { number: 3, title: "He Knows the Bus", duration: "1m 22s", free: true },
+  { number: 4, title: "The Pharmacist Notices", duration: "1m 14s", free: false },
+  { number: 5, title: "She Changes Routines", duration: "0m 58s", free: false },
+  { number: 6, title: "The Building Across", duration: "1m 26s", free: false },
+  { number: 7, title: "She Is Not the First", duration: "1m 04s", free: false },
+  { number: 8, title: "He Knows She Knows", duration: "1m 12s", free: false },
+  { number: 9, title: "The Stairwell", duration: "0m 51s", free: false },
+  { number: 10, title: "She Walks Right Up", duration: "1m 28s", free: false },
+  { number: 11, title: "The Window Goes Dark", duration: "1m 09s", free: false },
+  { number: 12, title: "The Last Thing He Says", duration: "1m 24s", free: false },
 ];
 
-const films: FilmSeries[] = [
+const films: Film[] = [
   {
     slug: "the-window-across-the-way",
     title: "The Window Across the Way",
     tagline: "She started watching back.",
     plot:
-      "A late-shift nurse comes home and notices the third-floor window stays lit every night. The man inside doesn't move. When she changes her routines, the patterns change with her. A slow-burn thriller about being seen — and deciding to look back.",
+      "A late-shift nurse comes home and notices the third-floor window stays lit every night. The man inside doesn't move. When she changes her routines, the patterns change with her. A slow-burn thriller about being seen — and deciding to look back. Twelve micro scenes. About fifteen minutes total.",
     genre: "Thriller",
     tags: [
       "Thriller",
@@ -89,11 +78,13 @@ const films: FilmSeries[] = [
     openingCaption: "She knew the third window.",
     posterTone:
       "from-[#3a2316] via-[#1a110b] to-[#06050a]",
+    totalDuration: "~15 min",
+    passPrice: "$2.49",
     stats: {
       likes: "12.8k",
       saves: "146.2k",
     },
-    episodes: windowEpisodes,
+    scenes: windowScenes,
   },
 ];
 
@@ -101,6 +92,6 @@ export function getFilm(slug: string) {
   return films.find((film) => film.slug === slug);
 }
 
-export function listFilms(): ReadonlyArray<FilmSeries> {
+export function listFilms(): ReadonlyArray<Film> {
   return films;
 }

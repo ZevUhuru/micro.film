@@ -26,14 +26,14 @@ export const metadata: Metadata = {
     template: "%s — micro.film",
   },
   description:
-    "Cast a character, write your scenes, cut a vertical micro film up to three minutes. Share it as a TikTok, YouTube Short, or Instagram Reel.",
+    "Cast a character, write 45–90 second micro scenes, cut a fifteen-minute vertical micro film. First three micro scenes free, rest unlocked with a Pass.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "micro.film — Make a Micro Film",
     description:
-      "A cinematic studio for short-form film. Cast, write, render, and share in minutes.",
+      "A cinematic studio for micro films. A dozen micro scenes. Fifteen minutes. One story.",
     url: "https://micro.film",
     siteName: "micro.film",
     type: "website",

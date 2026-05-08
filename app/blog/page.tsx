@@ -7,12 +7,12 @@ import { blogPosts } from "@/lib/workflow";
 export const metadata: Metadata = {
   title: "Notes",
   description:
-    "Notes on writing micro films, designing shots, and shipping vertical clips to TikTok, YouTube Shorts, and Instagram Reels.",
+    "Notes on writing micro films, designing shots, and shipping vertical micro scenes to TikTok, YouTube Shorts, and Instagram Reels.",
   alternates: { canonical: "/blog" },
   openGraph: {
     title: "micro.film Notes",
     description:
-      "Field notes on writing, casting, and shipping short cinematic films.",
+      "Field notes on writing, casting, and shipping micro films.",
     url: "https://micro.film/blog",
     siteName: "micro.film",
     type: "website",
@@ -35,8 +35,8 @@ export default function BlogPage() {
               Field notes from the cutting room.
             </h1>
             <p className="mt-5 max-w-xl text-base leading-7 text-[var(--foreground)]/65">
-              Short essays on writing, casting, and shipping micro films. New
-              entries between scenes.
+              Tight essays on writing, casting, and shipping micro films. New
+              entries between micro scenes.
             </p>
           </div>
           <div aria-hidden="true">

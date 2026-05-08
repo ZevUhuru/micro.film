@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FilmStrip, FilmStripBadge } from "@/components/FilmStrip";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
-import { getFilm, listFilms, type FilmEpisode } from "@/lib/films";
+import { getFilm, listFilms, type FilmScene } from "@/lib/films";
+import { SUBSCRIPTION_PRICE } from "@/lib/workflow";
 
 type WatchPageProps = {
   params: Promise<{ slug: string }>;
@@ -32,7 +33,7 @@ export async function generateMetadata({
       description: film.plot,
       url: `https://micro.film/watch/${film.slug}`,
       siteName: "micro.film",
-      type: "video.episode",
+      type: "video.movie",
     },
   };
 }
@@ -45,9 +46,9 @@ export default async function WatchPage({ params }: WatchPageProps) {
     notFound();
   }
 
-  const currentEpisode = film.episodes[0];
-  const totalEpisodes = film.episodes.length;
-  const freeCount = film.episodes.filter((episode) => episode.free).length;
+  const currentScene = film.scenes[0];
+  const totalScenes = film.scenes.length;
+  const freeCount = film.scenes.filter((scene) => scene.free).length;
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[var(--background)] text-[var(--foreground)]">
@@ -55,14 +56,14 @@ export default async function WatchPage({ params }: WatchPageProps) {
       <SiteHeader active="home" />
 
       <main className="relative z-10 mx-auto max-w-7xl px-4 pb-16 sm:px-8">
-        <Breadcrumb seriesTitle={film.title} episodeNumber={currentEpisode.number} />
+        <Breadcrumb filmTitle={film.title} sceneNumber={currentScene.number} />
 
         <section className="grid gap-8 pt-6 lg:grid-cols-[0.42fr_0.58fr] lg:items-start">
-          <PlayerColumn film={film} episode={currentEpisode} />
+          <PlayerColumn film={film} scene={currentScene} />
           <DetailColumn
             film={film}
-            currentEpisode={currentEpisode}
-            totalEpisodes={totalEpisodes}
+            currentScene={currentScene}
+            totalScenes={totalScenes}
             freeCount={freeCount}
           />
         </section>
@@ -79,10 +80,10 @@ export default async function WatchPage({ params }: WatchPageProps) {
 
 function PlayerColumn({
   film,
-  episode,
+  scene,
 }: {
   film: ReturnType<typeof getFilm> & object;
-  episode: FilmEpisode;
+  scene: FilmScene;
 }) {
   return (
     <div className="lg:sticky lg:top-6">
@@ -102,7 +103,7 @@ function PlayerColumn({
       <FilmStrip className="rounded-[1.4rem]" holes={18}>
         <div className="overflow-hidden rounded-[1.05rem] bg-[var(--ink)] p-1">
           <article
-            aria-label={`Episode ${episode.number}: ${episode.title}`}
+            aria-label={`Micro scene ${scene.number}: ${scene.title}`}
             className={`relative grid aspect-[9/16] w-full place-items-end overflow-hidden rounded-xl bg-gradient-to-b ${film.posterTone}`}
           >
             {/* Layered cinematic light + vignette */}
@@ -117,7 +118,7 @@ function PlayerColumn({
 
             {/* Top HUD */}
             <div className="absolute inset-x-0 top-0 flex items-center justify-between p-4 font-mono text-[11px] uppercase tracking-[0.22em] text-white/85">
-              <span>EP {String(episode.number).padStart(2, "0")} · {episode.duration}</span>
+              <span>Micro scene {String(scene.number).padStart(2, "0")} · {scene.duration}</span>
               <span>9:16</span>
             </div>
 
@@ -132,14 +133,14 @@ function PlayerColumn({
             <div className="relative z-10 flex w-full items-end justify-between p-5">
               <button
                 type="button"
-                aria-label="Play episode 1"
+                aria-label="Play micro scene 1"
                 className="grid size-14 place-items-center rounded-full bg-[var(--paper)] text-[var(--ink)] shadow-[0_18px_60px_rgba(0,0,0,0.6)] transition hover:bg-[var(--amber-soft)]"
               >
                 <PlayIcon />
               </button>
               <div className="text-right font-mono text-[11px] uppercase tracking-[0.22em] text-white/75">
                 <p className="serif text-base leading-tight text-white/95">
-                  {episode.title}
+                  {scene.title}
                 </p>
                 <p className="mt-1">Tap to play</p>
               </div>
@@ -163,13 +164,13 @@ function PlayerColumn({
 
 function DetailColumn({
   film,
-  currentEpisode,
-  totalEpisodes,
+  currentScene,
+  totalScenes,
   freeCount,
 }: {
   film: ReturnType<typeof getFilm> & object;
-  currentEpisode: FilmEpisode;
-  totalEpisodes: number;
+  currentScene: FilmScene;
+  totalScenes: number;
   freeCount: number;
 }) {
   return (
@@ -182,11 +183,14 @@ function DetailColumn({
         <p className="mt-4 max-w-2xl text-lg leading-8 text-[var(--foreground)]/70">
           {film.tagline}
         </p>
+        <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/50">
+          {film.totalDuration} · {totalScenes} micro scenes · first {freeCount} free
+        </p>
       </header>
 
       <section>
         <h2 className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--amber-soft)]">
-          Plot — Episode {currentEpisode.number}
+          Plot
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-8 text-[var(--foreground)]/72">
           {film.plot}
@@ -208,11 +212,14 @@ function DetailColumn({
 
       <ActionRow stats={film.stats} />
 
-      <EpisodeGrid
-        episodes={film.episodes}
-        currentNumber={currentEpisode.number}
-        totalEpisodes={totalEpisodes}
+      <PassPanel passPrice={film.passPrice} freeCount={freeCount} totalScenes={totalScenes} />
+
+      <SceneGrid
+        scenes={film.scenes}
+        currentNumber={currentScene.number}
+        totalScenes={totalScenes}
         freeCount={freeCount}
+        passPrice={film.passPrice}
       />
     </div>
   );
@@ -259,68 +266,112 @@ function ActionRow({
   );
 }
 
-function EpisodeGrid({
-  episodes,
-  currentNumber,
-  totalEpisodes,
+function PassPanel({
+  passPrice,
   freeCount,
+  totalScenes,
 }: {
-  episodes: ReadonlyArray<FilmEpisode>;
-  currentNumber: number;
-  totalEpisodes: number;
+  passPrice: string;
   freeCount: number;
+  totalScenes: number;
+}) {
+  const lockedCount = totalScenes - freeCount;
+  return (
+    <section
+      aria-label="Unlock the rest of the film"
+      className="rounded-3xl border border-[var(--amber)]/30 bg-[radial-gradient(circle_at_30%_20%,rgba(232,184,106,0.18),transparent_60%),linear-gradient(180deg,#1a1612,#0c0a08)] p-6 sm:p-8"
+    >
+      <div className="flex flex-wrap items-start justify-between gap-6">
+        <div className="max-w-md">
+          <FilmStripBadge label="Unlock the film" />
+          <h2 className="serif mt-4 text-3xl leading-tight">
+            Watch the next {lockedCount} micro scenes.
+          </h2>
+          <p className="mt-3 text-sm leading-7 text-[var(--foreground)]/70">
+            One Pass unlocks every micro scene of this film for keeps. Or go
+            All-access for {SUBSCRIPTION_PRICE} and watch every micro film.
+          </p>
+        </div>
+        <div className="flex flex-col items-stretch gap-3 sm:items-end">
+          <button
+            type="button"
+            className="rounded-full bg-[var(--paper)] px-6 py-3 text-sm font-medium text-[var(--ink)] transition hover:bg-[var(--amber-soft)]"
+          >
+            Buy Pass — {passPrice}
+          </button>
+          <button
+            type="button"
+            className="rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-[var(--foreground)] transition hover:bg-white/5"
+          >
+            All-access — {SUBSCRIPTION_PRICE}
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SceneGrid({
+  scenes,
+  currentNumber,
+  totalScenes,
+  freeCount,
+  passPrice,
+}: {
+  scenes: ReadonlyArray<FilmScene>;
+  currentNumber: number;
+  totalScenes: number;
+  freeCount: number;
+  passPrice: string;
 }) {
   return (
-    <section aria-label="Episodes">
+    <section aria-label="Micro scenes">
       <header className="flex items-end justify-between">
         <div>
-          <h2 className="serif text-2xl leading-tight">All episodes</h2>
+          <h2 className="serif text-2xl leading-tight">All micro scenes</h2>
           <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/55">
-            {totalEpisodes} films · {freeCount} free
+            {totalScenes} micro scenes · {freeCount} free
           </p>
         </div>
         <nav
-          aria-label="Episode tabs"
+          aria-label="Micro scene tabs"
           className="hidden items-center gap-2 sm:flex"
         >
           <span className="rounded-full bg-[var(--paper)] px-3 py-1 text-xs font-medium text-[var(--ink)]">
-            01 — {String(totalEpisodes).padStart(2, "0")}
-          </span>
-          <span className="rounded-full border border-white/15 px-3 py-1 text-xs text-[var(--foreground)]/65">
-            Coming soon
+            01 — {String(totalScenes).padStart(2, "0")}
           </span>
         </nav>
       </header>
 
       <ul className="mt-6 grid grid-cols-4 gap-2 sm:grid-cols-6 lg:grid-cols-6">
-        {episodes.map((episode) => {
-          const isCurrent = episode.number === currentNumber;
+        {scenes.map((scene) => {
+          const isCurrent = scene.number === currentNumber;
           const status: "current" | "free" | "locked" = isCurrent
             ? "current"
-            : episode.free
+            : scene.free
               ? "free"
               : "locked";
 
           return (
-            <li key={episode.number}>
-              <EpisodeTile episode={episode} status={status} />
+            <li key={scene.number}>
+              <SceneTile scene={scene} status={status} />
             </li>
           );
         })}
       </ul>
 
       <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/45">
-        Free episodes 01 – 03 · Unlock the rest with a pass
+        Micro scenes 01 – {String(freeCount).padStart(2, "0")} free · Unlock the rest with a {passPrice} Pass
       </p>
     </section>
   );
 }
 
-function EpisodeTile({
-  episode,
+function SceneTile({
+  scene,
   status,
 }: {
-  episode: FilmEpisode;
+  scene: FilmScene;
   status: "current" | "free" | "locked";
 }) {
   const baseClasses =
@@ -336,8 +387,8 @@ function EpisodeTile({
   return (
     <button
       type="button"
-      aria-label={`Episode ${episode.number}: ${episode.title}`}
-      title={episode.title}
+      aria-label={`Micro scene ${scene.number}: ${scene.title}`}
+      title={scene.title}
       className={`${baseClasses} ${stateClasses}`}
     >
       {/* Sprocket edge motif on the top */}
@@ -355,7 +406,7 @@ function EpisodeTile({
 
       <div className="flex items-center justify-between">
         <span className="serif text-2xl leading-none">
-          {String(episode.number).padStart(2, "0")}
+          {String(scene.number).padStart(2, "0")}
         </span>
         {status === "locked" ? (
           <span
@@ -376,18 +427,18 @@ function EpisodeTile({
       </div>
 
       <p className="line-clamp-2 text-[11px] leading-snug text-[var(--foreground)]/60 group-hover:text-[var(--foreground)]/80">
-        {episode.title}
+        {scene.title}
       </p>
     </button>
   );
 }
 
 function Breadcrumb({
-  seriesTitle,
-  episodeNumber,
+  filmTitle,
+  sceneNumber,
 }: {
-  seriesTitle: string;
-  episodeNumber: number;
+  filmTitle: string;
+  sceneNumber: number;
 }) {
   return (
     <nav
@@ -399,11 +450,11 @@ function Breadcrumb({
       </Link>
       <span aria-hidden="true">/</span>
       <Link href="/" className="transition hover:text-[var(--foreground)]">
-        {seriesTitle}
+        {filmTitle}
       </Link>
       <span aria-hidden="true">/</span>
       <span className="text-[var(--foreground)]">
-        Episode {episodeNumber}
+        Micro scene {sceneNumber}
       </span>
     </nav>
   );

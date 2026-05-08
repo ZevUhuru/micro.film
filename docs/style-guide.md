@@ -33,10 +33,16 @@ Always use these terms exactly:
 | ------------ | ---------------------------------------------------------------------- |
 | Micro film   | The form. A vertical film of up to ten minutes, composed of micro scenes. |
 | Micro scene  | The unit. 45–90 seconds, 9:16, locked to a character.                  |
+| Screenplay   | The first deliverable — title, logline, characters, scenes with action and dialogue. Every micro film starts here. |
 | Cut          | The assembled sequence of micro scenes that make the film.             |
 | Project      | A single micro film a creator or team is building inside the studio.   |
 | Showcase     | The in-house library at `/watch` proving what the platform can do.    |
 | Roll camera  | Primary verb for kicking off a render.                                 |
+
+The screenplay is the noun. We do **not** call it a "script." Verbs
+for working on it are concrete craft actions — *Write, Rewrite,
+Tighten, Extend, Suggest a turn* — never generic AI verbs like
+"magic" or "improve."
 
 A micro film is **capped at 10 minutes** and is composed of **micro
 scenes between 45 and 90 seconds each**. Films can run much shorter — a

@@ -16,6 +16,7 @@ small and human-readable. Add to it as the product changes.
 Always use these terms consistently in code, copy, and product surfaces:
 
 - **Micro film** — the form. A vertical film capped at 10 minutes, composed of micro scenes.
+- **Screenplay** — the first deliverable of every micro film. Title, logline, characters, scenes with action and dialogue. Lives at `/studio/screenplay`. Always called a *screenplay*, never a "script."
 - **Micro scene** — the unit. 45–90 seconds, 9:16, locked to a character.
 - **Cut** — the assembled sequence of micro scenes that make the film.
 - **Project** — a single micro film a creator or team is building inside the studio.

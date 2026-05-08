@@ -49,7 +49,7 @@ export const workflowSteps = [
     eyebrow: "02",
     title: "Develop",
     description:
-      "Cast a character with a locked reference sheet, write each micro scene as a single beat, and lock the shot list.",
+      "Write the screenplay — title, logline, characters, scenes — yourself with assistance or from a guided prompt. Cast a character with a locked reference sheet and lock the shot list.",
   },
   {
     eyebrow: "03",

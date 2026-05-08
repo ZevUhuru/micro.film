@@ -113,14 +113,25 @@ export default function StudioPage() {
           <div>
             <FilmStripBadge label="Studio" />
             <h1 className="serif mt-5 max-w-2xl text-balance text-5xl leading-[1.05] sm:text-6xl">
-              <span className="italic">Roll</span> a film in three steps.
+              <span className="italic">Roll</span> a film, end to end.
             </h1>
             <p className="mt-5 max-w-xl text-base leading-7 text-[var(--foreground)]/65">
-              Fill the slate, lock the character, queue the render. Cut a
-              handful of 45–90 second micro scenes into a vertical film of
-              up to ten minutes — for a campaign, a publisher channel, or
-              your own reel.
+              Write the screenplay, lock the character, queue the
+              render, stitch the cut. A handful of 45–90 second micro
+              scenes into a vertical film of up to ten minutes — for a
+              campaign, a publisher channel, or your own reel.
             </p>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <Link
+                href="/studio/screenplay"
+                className="inline-flex items-center gap-2 rounded-full bg-[var(--paper)] px-5 py-3 text-sm font-medium text-[var(--ink)] transition hover:bg-[var(--amber-soft)]"
+              >
+                Open the screenplay editor →
+              </Link>
+              <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/45">
+                Step 02 — Develop
+              </span>
+            </div>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-sm">
             <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--amber-soft)]">

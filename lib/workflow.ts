@@ -1,179 +1,204 @@
 export const IMAGE_MODEL_ID = "gpt-image-2";
 export const VIDEO_MODEL_ID = "seedance-2.0";
 
+/** The three-step pipeline shown across the marketing and studio surfaces. */
 export const workflowSteps = [
   {
     eyebrow: "01",
-    title: "Character reference sheet",
+    title: "Cast a character",
     description:
-      "Generate one production-safe sheet per lead: face turns, wardrobe, emotional range, key props, and continuity notes.",
+      "Generate a character reference sheet locked to face, wardrobe, and lighting so every shot stays on the same person.",
   },
   {
     eyebrow: "02",
-    title: "Scene prompt builder",
+    title: "Write the scene",
     description:
-      "Turn a creator brief into a 15-second beat with camera language, dialogue intent, wardrobe, lighting, and cliffhanger pressure.",
+      "Compose a 15-second scene with location, action, camera move, and the line that lands the moment.",
   },
   {
     eyebrow: "03",
-    title: "Seedance render pass",
+    title: "Render and share",
     description:
-      "Send the reference sheet plus prompt to the video model, then track render status, review notes, and export targets.",
+      "Render a vertical clip and post it straight to TikTok, YouTube Shorts, or Instagram Reels.",
   },
 ] as const;
 
-export const dramaRails = [
+/** Distribution surfaces highlighted across the site. */
+export const platforms = [
+  { name: "TikTok", handle: "@yourhandle", aspect: "9:16", duration: "15s" },
+  { name: "YouTube Shorts", handle: "@yourchannel", aspect: "9:16", duration: "15s" },
+  { name: "Instagram Reels", handle: "@yourbrand", aspect: "9:16", duration: "15s" },
+] as const;
+
+/** Creator categories the product supports. Replaces drama-only framing. */
+export const useCases = [
   {
-    title: "Hidden Identity",
-    shows: [
-      "The CEO Bought My Block",
-      "Mafia Dad Next Door",
-      "The Janitor Was a Mogul",
-      "Secret Wife, Public Enemy",
-    ],
+    title: "Filmmakers",
+    description: "Storyboard a moment, then render a real frame from it in minutes.",
   },
   {
-    title: "Betrayal & Revenge",
-    shows: [
-      "My Sister Stole My Wedding",
-      "Receipts at the Altar",
-      "He Paid Her Debt",
-      "The Ex Who Lost Everything",
-    ],
+    title: "Music artists",
+    description: "Visualize a single line, mood, or hook into a shareable cinematic clip.",
   },
   {
-    title: "Power Romance",
-    shows: [
-      "Soft Life, Hard Terms",
-      "His Dangerous Tenderness",
-      "Salon Queen",
-      "The Mogul's Last Warning",
-    ],
+    title: "Brands",
+    description: "Spin product moments into vertical film instead of plain ad assets.",
+  },
+  {
+    title: "Creators",
+    description: "Tell a serialized story in 15-second beats your audience returns for.",
   },
 ] as const;
 
-export const posterCards = [
+/** Sample film concepts shown as cinematic posters on the landing page. */
+export const filmConcepts = [
   {
-    title: "He Bought the Block",
-    tag: "Hidden identity",
+    title: "Last Light on Sunset",
+    genre: "Drama",
+    runtime: "15s",
+    aspect: "9:16",
     logline:
-      "A salon owner confronts the investor saving her business and discovers his name is tied to the night her brother disappeared.",
-    gradient: "from-[#f7b267] via-[#9d174d] to-[#14050a]",
+      "A street musician closes the case on a long day as the city lights flick on around her.",
+    tone: "from-[#3b2a1d] via-[#4d2a18] to-[#0c0a08]",
   },
   {
-    title: "Receipts at the Altar",
-    tag: "Betrayal",
+    title: "The Long Walk Home",
+    genre: "Slice of life",
+    runtime: "15s",
+    aspect: "9:16",
     logline:
-      "Minutes before saying yes, a bride receives the video that proves everyone in the room has been lying to her.",
-    gradient: "from-[#f43f5e] via-[#4c0519] to-[#060104]",
+      "A father carries his sleeping son across a quiet block, every window an entire lifetime.",
+    tone: "from-[#1f2a35] via-[#2b3a4a] to-[#0c0a08]",
   },
   {
-    title: "Soft Life, Hard Terms",
-    tag: "Power romance",
+    title: "Cassette",
+    genre: "Music film",
+    runtime: "15s",
+    aspect: "9:16",
     logline:
-      "She wanted peace, wealth, and distance from drama. Then the one man she cannot trust offers all three.",
-    gradient: "from-[#facc15] via-[#be123c] to-[#111827]",
+      "A producer presses play on a tape that brings back the room, the people, and the year.",
+    tone: "from-[#2c1a2a] via-[#4a1f3a] to-[#0c0a08]",
   },
 ] as const;
 
-export const audienceSignals = [
-  "Betrayal in the first scene",
-  "A secret with financial stakes",
-  "A desirable lead with real danger",
-  "A cliffhanger before the scroll",
-  "Wardrobe, hair, and setting that feel specific",
+/** Pull quotes used on the landing page. Real names left blank intentionally. */
+export const testimonials = [
+  {
+    quote:
+      "I wrote a scene during lunch, rendered it on my phone, and posted it before my coffee was cold.",
+    role: "Independent filmmaker",
+  },
+  {
+    quote: "The character stays the same across every clip. That alone changes everything.",
+    role: "Music artist",
+  },
 ] as const;
 
+/** Defaults for the studio form so the page never looks empty. */
+export const studioDefaults = {
+  title: "Last Light on Sunset",
+  audience: "Posted to TikTok and Instagram Reels.",
+  logline:
+    "A street musician closes the case on a long day as the city lights flick on around her.",
+  leadCharacter:
+    "Maya, late twenties, weathered jean jacket over a black tee, silver hoops, soft natural curls, warm brown skin lit by a low golden hour sun.",
+  supportingCharacter:
+    "City sound: a distant subway, someone laughing across the street, a passing bike bell.",
+  sceneBeat:
+    "Maya snaps her guitar case shut on a corner of Sunset Boulevard. She looks up as the streetlights flicker on. Camera pulls back slowly. She allows herself a small smile.",
+} as const;
+
+/** Blog editorial entries with sample sections used on the detail page. */
 export const blogPosts = [
   {
-    slug: "vertical-drama-hooks-three-seconds",
-    title: "Why Vertical Drama Hooks Need to Land in Three Seconds",
-    category: "Story mechanics",
-    readTime: "5 min read",
+    slug: "what-is-a-micro-film",
+    title: "What Is a Micro Film?",
+    category: "Form",
+    readTime: "4 min read",
     excerpt:
-      "Micro-drama writing starts with pressure, not backstory. The first shot should tell viewers who wants power, who is hiding something, and why the next scene matters.",
-    deck: "The opening beat is not an introduction. It is a conversion test.",
+      "A micro film is a short cinematic piece, often vertical, often under thirty seconds, designed to feel like a real moment from a real story.",
+    deck: "It is not an ad. It is not a meme. It is a moment that earns its frame.",
     content: [
       {
-        heading: "Start with pressure",
-        body: "A vertical drama has almost no patience window. The viewer should understand the imbalance immediately: someone has the money, someone has the secret, someone is about to lose control. If the first shot is only mood, the scroll wins.",
+        heading: "Short is not small",
+        body: "A micro film respects the runtime by treating every second like real screen time. The frame is composed, the light is intentional, the character has a thought we can see.",
       },
       {
-        heading: "Make the premise readable",
-        body: "The strongest hooks can be explained from one frame and one line of dialogue. A woman freezes at the altar. A man signs away a debt. A sister smiles while hiding the betrayal. The setup is simple, but the implication feels expensive.",
+        heading: "Cinematic by default",
+        body: "Even at fifteen seconds, the language is film: lens choice, light direction, blocking, cut. The product should make those choices easy, not hide them.",
       },
       {
-        heading: "End before the release",
-        body: "A 15-second clip should rarely resolve the beat. It should create the emotional question that makes the next clip necessary: why did he pay, who sent the video, what does she know, and what happens if the room hears it?",
+        heading: "Built to share",
+        body: "The output is a vertical clip ready for TikTok, YouTube Shorts, and Instagram Reels. Not a placeholder for an edit you will do later.",
       },
     ],
   },
   {
-    slug: "character-sheet-consistent-ai-video",
-    title: "Designing a Character Sheet for Consistent AI Video",
+    slug: "character-sheet-consistency",
+    title: "Why a Character Reference Sheet Changes Everything",
     category: "Production",
-    readTime: "7 min read",
+    readTime: "6 min read",
     excerpt:
-      "A useful reference sheet is more than a pretty portrait. It locks hair, wardrobe, facial structure, expression range, and continuity notes before the video model ever sees the scene.",
-    deck: "Consistency starts before video. The sheet is the source of truth.",
+      "The fastest way to make AI video feel like a real film is to lock the character once, then return to that same person across every clip.",
+    deck: "A consistent character is the difference between a clip and a film.",
     content: [
       {
         heading: "Lock the face before the scene",
-        body: "For serialized clips, the character sheet is the anchor. Front view, three-quarter view, profile, hairline, skin tone, facial structure, and expression range all need to be established before the first animated shot.",
+        body: "Front view, three-quarter, profile, wardrobe, palette, key props. The reference sheet is the source of truth that the video model returns to every time.",
       },
       {
         heading: "Wardrobe is story information",
-        body: "Clothing should say status, taste, and emotional state. A salon owner, a music executive, and a billionaire hiding in plain sight need different textures, silhouettes, jewelry, and color language.",
+        body: "The jacket, the boots, the watch, the chain. Each piece is a continuity choice and a personality choice. Writing it down once keeps every frame honest.",
       },
       {
-        heading: "Give the video prompt continuity notes",
-        body: "The video prompt should repeat the non-negotiables: hairstyle, outfit, prop, age range, expression, and relationship to the scene. That repetition is not filler. It is continuity control.",
+        heading: "Continuity is a creative move",
+        body: "When the same person walks into the next scene, the audience trusts the world. That trust is what makes them stay for the next clip.",
       },
     ],
   },
   {
-    slug: "hidden-identity-betrayal-revenge-trope-stack",
-    title: "Hidden Identity, Betrayal, Revenge: The Trope Stack That Converts",
-    category: "Audience",
-    readTime: "6 min read",
+    slug: "writing-a-fifteen-second-scene",
+    title: "Writing a Fifteen-Second Scene",
+    category: "Writing",
+    readTime: "5 min read",
     excerpt:
-      "The fastest micro-drama concepts are readable from the poster: a secret, a reversal, a romantic complication, and a reason to keep tapping.",
-    deck: "A good trope stack gives the viewer a promise before the first line.",
-    content: [
-      {
-        heading: "Tropes are navigation",
-        body: "Hidden identity, betrayal, revenge, contract marriage, and power romance work because they tell the audience what emotional ride they are buying. The point is not originality at the label level. The originality comes from execution and specificity.",
-      },
-      {
-        heading: "Stack conflict with desire",
-        body: "Betrayal alone can feel cold. Romance alone can feel soft. Put them together and the scene gains pressure: the person she wants is also the person she cannot trust.",
-      },
-      {
-        heading: "Use status reversals",
-        body: "Micro-drama audiences respond to power shifts. The ignored woman becomes the owner. The mocked husband becomes the billionaire. The quiet friend controls the room. Every reversal should be visible and emotionally satisfying.",
-      },
-    ],
-  },
-  {
-    slug: "write-15-second-scene",
-    title: "How to Write a 15-Second Scene That Feels Bigger Than It Is",
-    category: "Prompting",
-    readTime: "4 min read",
-    excerpt:
-      "The scene should behave like a compressed soap beat: one location, one confrontation, one emotional turn, and one unanswered question.",
-    deck: "Small runtime, big implication. That is the whole game.",
+      "A short scene is a small space with a tall ceiling. One location, one decision, one frame the viewer remembers.",
+    deck: "Compress without losing the moment.",
     content: [
       {
         heading: "One location",
-        body: "Do not move the audience through five places. Put the pressure in a salon after closing, a wedding hallway, a parking garage, an office elevator, or a restaurant booth. A contained location makes the emotion louder.",
+        body: "Pick a single, real place. A doorway. A booth. A rooftop. The geography becomes part of the scene because the audience never leaves it.",
       },
       {
         heading: "One turn",
-        body: "The character should enter the clip believing one thing and exit the clip forced to believe another. He is not a stranger. The debt is already paid. The phone call is from someone who should be dead.",
+        body: "Something shifts. A character realizes, decides, refuses, or steps forward. If nothing turns, you have a moodboard, not a scene.",
       },
       {
-        heading: "One unanswered question",
-        body: "End on a question that is emotional, not logistical. Not simply what happens next, but what does this reveal mean for her pride, her family, her safety, or the relationship she thought she understood?",
+        heading: "One frame to remember",
+        body: "Design the shot you want screenshotted. That image is the poster, the thumbnail, and the reason the viewer comes back for the next one.",
+      },
+    ],
+  },
+  {
+    slug: "shipping-vertical-by-default",
+    title: "Shipping Vertical by Default",
+    category: "Distribution",
+    readTime: "3 min read",
+    excerpt:
+      "TikTok, Shorts, and Reels reward the same thing: a vertical frame composed for a phone, with a hook in the first second.",
+    deck: "Design for the phone first. Everything else is downstream.",
+    content: [
+      {
+        heading: "Compose for the device",
+        body: "Vertical 9:16, faces and key action in the upper two-thirds, room at the bottom for captions and platform UI. Plan the frame around the phone, not against it.",
+      },
+      {
+        heading: "Hook in the first second",
+        body: "The opening frame should answer who, where, and what is at stake. Audiences swipe before a slow build can land.",
+      },
+      {
+        heading: "One clip, three platforms",
+        body: "A single render covers TikTok, Shorts, and Reels. The export should be the same file with platform-specific captions, not three different cuts.",
       },
     ],
   },
@@ -182,16 +207,3 @@ export const blogPosts = [
 export function getBlogPost(slug: string) {
   return blogPosts.find((post) => post.slug === slug);
 }
-
-export const studioDefaults = {
-  title: "He Bought the Block, She Owned the Room",
-  audience: "Black American women who binge romance, betrayal, and power-shift drama.",
-  logline:
-    "A brilliant salon owner discovers the investor saving her business is the same man tied to her brother's downfall.",
-  leadCharacter:
-    "Nia Carter, 31, salon founder, sharp wit, protective older sister, polished soft-life style with steel underneath.",
-  maleLead:
-    "Malik Cross, 34, real estate operator, controlled intensity, tailored street-luxury wardrobe, dangerous reputation, private tenderness.",
-  sceneBeat:
-    "Nia confronts Malik in the empty salon after closing. He reveals he paid the debt, but not why. The lights flicker as her brother calls.",
-} as const;

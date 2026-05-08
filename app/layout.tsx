@@ -1,32 +1,39 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const sans = Geist({
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const mono = Geist_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
+});
+
+const serif = Instrument_Serif({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://micro.film"),
   title: {
-    default: "micro.film — AI Micro-Drama Studio",
+    default: "micro.film — Make a Micro Film",
     template: "%s — micro.film",
   },
   description:
-    "Create character reference sheets, prompt 15-second micro-drama scenes, and render phone-native vertical drama clips.",
+    "Cast a character, write a scene, render a 15-second cinematic clip. Share it as a TikTok, YouTube Short, or Instagram Reel.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "micro.film — AI Micro-Drama Studio",
+    title: "micro.film — Make a Micro Film",
     description:
-      "A production studio for AI-native serialized micro-dramas.",
+      "A cinematic studio for short-form film. Cast, write, render, and share in minutes.",
     url: "https://micro.film",
     siteName: "micro.film",
     type: "website",
@@ -41,9 +48,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${sans.variable} ${serif.variable} ${mono.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-[#0a0508]">{children}</body>
+      <body className="min-h-full bg-[var(--background)] text-[var(--foreground)]">
+        {children}
+      </body>
     </html>
   );
 }

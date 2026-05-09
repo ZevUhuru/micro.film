@@ -13,7 +13,7 @@
  *
  * Generation is currently mocked locally — the API returns SVG data
  * URIs that compose cinematic gradients so the gallery looks real
- * before the ESY image endpoint exists. When wired:
+ * before the Esy image endpoint exists. When wired:
  *
  *   - Image generation routes through api.esy.com → gpt-image-2.
  *   - Per the model-pinning rule, prefer the dated snapshot id
@@ -139,13 +139,13 @@ const paletteOrder: CoverPalette[] = [
 ];
 
 /* -------------------------------------------------------------------------- */
-/* Mock generator (v0.1 — replaced by gpt-image-2 via ESY)                    */
+/* Mock generator (v0.1 — replaced by gpt-image-2 via Esy)                    */
 /* -------------------------------------------------------------------------- */
 
 /**
  * Builds a cinematic 9:16 cover composition as an inline SVG and
  * returns it as a data URI. Used so the cover gallery looks real
- * before the ESY image endpoint exists. Output dimensions are
+ * before the Esy image endpoint exists. Output dimensions are
  * 1024x1536 — the gpt-image-2 vertical size we'll request live.
  */
 export function mockGenerateCover(

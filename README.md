@@ -45,8 +45,8 @@ Open [http://localhost:3000](http://localhost:3000).
 - `/blog` and `/blog/[slug]` — editorial notes on the form and craft.
 - `/watch/[slug]` — Micro Film Studios showcase film page.
 - `/api/runs` — prototype run contract for micro scene + film orchestration.
-- `/api/screenplay` — screenplay generate / per-scene assist endpoint (mocked in v0.1; wires to ESY).
-- `/api/cover` — cover generate / edit endpoint (mocked in v0.1; wires to ESY → `gpt-image-2`).
+- `/api/screenplay` — screenplay generate / per-scene assist endpoint (mocked in v0.1; wires to Esy).
+- `/api/cover` — cover generate / edit endpoint (mocked in v0.1; wires to Esy → `gpt-image-2`).
 
 ## The Four-Step Pipeline
 

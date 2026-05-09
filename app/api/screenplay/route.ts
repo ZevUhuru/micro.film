@@ -11,8 +11,8 @@
  *
  * v0.1 returns deterministic local mocks so the editor can roundtrip
  * without a provider account. The real implementation routes through
- * api.esy.com per the ESY architecture (clip.art / micro.film delegate
- * all generation to ESY). When wiring:
+ * api.esy.com per the Esy architecture (clip.art / micro.film delegate
+ * all generation to Esy). When wiring:
  *
  *   - Pin the model to a dated snapshot id, never a "*-latest" alias.
  *     See `.cursor/rules/model-pinning.mdc`.

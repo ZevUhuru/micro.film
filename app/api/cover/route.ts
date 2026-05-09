@@ -12,8 +12,8 @@
  *
  * v0.1 returns local SVG mocks so the cover gallery roundtrips
  * without a provider account. The real implementation routes through
- * api.esy.com per the ESY architecture (clip.art / micro.film delegate
- * all generation to ESY) and uses ChatGPT Images 2.0 (`gpt-image-2`).
+ * api.esy.com per the Esy architecture (clip.art / micro.film delegate
+ * all generation to Esy) and uses ChatGPT Images 2.0 (`gpt-image-2`).
  *
  * Wiring notes (production):
  *

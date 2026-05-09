@@ -11,7 +11,7 @@
  * Write, Rewrite, Tighten, Extend, Suggest a turn — concrete craft
  * actions, not generic AI verbs like "magic" or "improve."
  *
- * Generation is currently mocked locally. When wired to ESY's
+ * Generation is currently mocked locally. When wired to Esy's
  * api.esy.com, the model id must follow the model-pinning rule:
  * dated snapshots only, no floating "*-latest" aliases. See
  * `.cursor/rules/model-pinning.mdc`.
@@ -124,13 +124,13 @@ function formatRuntimeLabel(totalSeconds: number): string {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Mock generator (v0.1 — replaces with ESY screenplay API)                   */
+/* Mock generator (v0.1 — replaces with Esy screenplay API)                   */
 /* -------------------------------------------------------------------------- */
 
 /**
  * Deterministic mock that turns a guided prompt into a full screenplay
  * draft. Used so the editor has a real shape to render in v0.1 before
- * the ESY screenplay endpoint exists. Output is an 8-scene structure
+ * the Esy screenplay endpoint exists. Output is an 8-scene structure
  * sized to fit the 10-min cap.
  */
 export function mockGenerateScreenplay(
@@ -241,7 +241,7 @@ export function mockGenerateScreenplay(
 /**
  * Mock per-scene rewrite. Returns the input scene with a small,
  * obvious mutation so the UI roundtrip is visible. Real version
- * routes the scene + instruction through ESY.
+ * routes the scene + instruction through Esy.
  */
 export function mockRewriteScene(
   scene: ScreenplayScene,

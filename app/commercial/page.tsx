@@ -259,8 +259,7 @@ function CTA() {
         </h2>
         <p className="mt-5 max-w-2xl text-base leading-8 text-[var(--foreground)]/70">
           Bring a product, listing, launch, or publisher idea. We turn it
-          into a finished vertical film, then decide whether it should
-          become a repeatable Esy workflow.
+          into a finished vertical film.
         </p>
         <div className="mt-8">
           <Link

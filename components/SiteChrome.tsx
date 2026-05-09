@@ -8,7 +8,7 @@ type SiteHeaderProps = {
 
 const navItems = [
   { key: "studio", label: "Studio", href: "/studio" },
-  { key: "commercial", label: "Commercial", href: "/commercial" },
+  // { key: "commercial", label: "Commercial", href: "/commercial" },
   { key: "blog", label: "Notes", href: "/blog" },
   { key: "about", label: "About", href: "/about" },
 ] as const;
@@ -76,9 +76,9 @@ export function SiteFooter() {
           <Link href="/studio" className="transition hover:text-[var(--foreground)]">
             Studio
           </Link>
-          <Link href="/commercial" className="transition hover:text-[var(--foreground)]">
+          {/* <Link href="/commercial" className="transition hover:text-[var(--foreground)]">
             Commercial
-          </Link>
+          </Link> */}
           <Link href="/blog" className="transition hover:text-[var(--foreground)]">
             Notes
           </Link>

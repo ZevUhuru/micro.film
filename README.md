@@ -67,6 +67,21 @@ npm run lint
 npm run build
 ```
 
+## Engineering Workflow
+
+This repo follows the Esy deployment workflow documented in
+[`../esy/client/app.esy.com/docs/DEPLOYMENT_WORKFLOW.md`](../esy/client/app.esy.com/docs/DEPLOYMENT_WORKFLOW.md).
+
+Minimum gate before pushing:
+
+```bash
+npm run lint
+npm run build
+```
+
+Use a PR for changes touching provider calls, API contracts, public routes,
+SEO, media workflows, auth/admin behavior, or deployment behavior.
+
 ## Notes
 
 - Keep provider orchestration outside the public UI layer.
